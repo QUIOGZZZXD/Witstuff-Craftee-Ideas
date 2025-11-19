@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Witstuff Cracftee Ideas</title>
+  <link rel="shortcut icon" href="../../assets/wci.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/me.css">
+  <link rel="stylesheet" href="../styles/landing-page.css">
+</head>
+
+<body>
+  <!-- NAVIGATION -->
+  <header class="navbar">
+    <div class="logo">
+        <div
+          class="image-container"
+          
+        >
+          <img
+            src="../../assets/Logo.jpg"
+          />
+        </div>
+        <h1 style="color: #a6785d">Witstuff Craftee Ideas</h1>
+      </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-icons">
+      <span><a href="/cart">🛒</a></span>
+      <button id="logout-button" style="border: none; cursor: pointer; background-color: transparent;">➜]</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Dashboard</h1>
+      <p>Discover our curated collection of handmade and unique items crafted by local sellers.</p>
+    </div>
+  </section>
+  <!-- The main application container -->
+  <div class="container">
+
+    <!-- ============================================== -->
+    <!-- SECTION 1: Dashboard View (image_ec86fc.png) -->
+    <!-- ============================================== -->
+    <section id="dashboard-section">
+
+      <div class="layout-container">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+          <nav class="nav-list">
+            <!-- Active Link: Dashboard -->
+            <a href="#" class="nav-item nav-item-active">
+              <span class="nav-bullet"></span>
+              <span>Dashboard</span>
+            </a><a href="/orders" class="nav-item">
+              <span class="nav-bullet"></span>
+              <span>Orders</span>
+            </a>
+            <a href="/billing-address" class="nav-item">
+              <span class="nav-bullet"></span>
+              <span>Address</span>
+            </a>
+          </nav>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+          <h1>Welcome to Your Account Dashboard</h1>
+          <p>
+            This central hub allows you to manage all aspects of your account with Witstuff Craftee Ideas. 
+            Here, you can quickly review recent activity, track your latest <strong>orders</strong>, and update your <strong>billing and shipping addresses</strong>.
+            Use the navigation panel on the left to access specific sections.
+          </p>
+          </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-col">
+
+         <h1 style="color: #A6785D ">Witstuff Craftee Ideas</h1>
+
+        <p>We create fresh, beautifully arranged bouquets that bring joy and elegance to every moment. Every bloom is crafted with care, passion, and a touch of nature’s charm.</p>
+        <div class="socials">
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" /></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" /></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" /></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" /></a>
+        </div>
+      </div>
+
+        <div class="footer-col">
+          <h4>Information</h4>
+          <ul>
+            <li><a href="#">Our Company</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Our Services</a></li>
+            <li><a href="#">Why we</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quicklink</h4>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Cart</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Online Support</a></li>
+            <li><a href="#">Shipping Policy</a></li>
+            <li><a href="#">Return Policy</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>See Information</h4>
+          <p>
+            Bringing smiles, one bouquet at a time. Fresh, vibrant flowers
+            crafted with care for every occasion.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>Copyright © 2025. All rights reserved.</p>
+      </div>
+    </footer>
+
+  <!-- ✅ Logout Confirm Modal -->
+  <div class="modal" id="logoutModal">
+    <div class="modal-content delete-box">
+      <div class="circle"></div>
+      <p>Are you sure you want to log out?</p>
+
+      <div class="delete-actions">
+        <form action="/api/auth/logout" method="post">
+          <button class="btn-primary" id="confirmLogout">Yes</button>
+        </form>
+        <button class="secondary-btn" id="cancelLogout">No</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../scripts/log-out-dialog.js"></script>
+  <script>
+    // === JAVASCRIPT FOR QUANTITY COUNTER AND CART/COUPON LOGIC ===
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const cartItemsContainer = document.getElementById('cart-items');
+      const subtotalElement = document.getElementById('subtotal');
+      const grandTotalElement = document.getElementById('grand-total');
+      const shippingElement = document.getElementById('shipping');
+
+      // Coupon Elements
+      const couponInput = document.getElementById('coupon-input');
+      const applyCouponButton = document.getElementById('apply-coupon-button');
+      const discountLine = document.getElementById('discount-line');
+      const discountAmountElement = document.getElementById('discount-amount');
+      const couponCodeDisplay = document.getElementById('coupon-code-display');
+      const couponStatusMessage = document.getElementById('coupon-status-message');
+
+      // Coupon State and Data
+      let appliedCoupon = null;
+      const validCoupons = {
+        'SAVE10': { type: 'percent', value: 0.10 }, // 10% off
+        'FIXED50': { type: 'fixed', value: 50.00 }   // Php 50.00 off
+      };
+
+      // Function to format currency
+      const formatCurrency = (value) => `Php. ${value.toFixed(2)}`;
+
+      // Function to show status message
+      function showCouponMessage(message, isSuccess = true) {
+        couponStatusMessage.textContent = message;
+        couponStatusMessage.className = isSuccess ? 'coupon-success' : 'coupon-error';
+
+        // Clear message after 5 seconds
+        setTimeout(() => {
+          couponStatusMessage.textContent = '';
+          couponStatusMessage.className = '';
+        }, 5000);
+      }
+
+      // Function to update the total for a single item
+      function updateItemTotal(item) {
+        const price = parseFloat(item.getAttribute('data-price'));
+        const qtyInput = item.querySelector('.qty-input');
+        let quantity = parseInt(qtyInput.value);
+
+        if (isNaN(quantity) || quantity < 1) {
+          quantity = 1;
+          qtyInput.value = 1;
+        }
+
+        // Update total attribute and display
+        const itemTotal = price * quantity;
+        item.setAttribute('data-quantity', quantity);
+        item.querySelector('.total-price').textContent = formatCurrency(itemTotal);
+
+        // Recalculate cart totals
+        updateCartTotals();
+      }
+
+      // Function to recalculate overall cart totals (updated for coupon logic)
+      function updateCartTotals() {
+        let subTotal = 0;
+
+        // 1. Calculate Subtotal
+        document.querySelectorAll('.cart-item').forEach(item => {
+          const price = parseFloat(item.getAttribute('data-price'));
+          const quantity = parseInt(item.getAttribute('data-quantity'));
+          subTotal += price * quantity;
+        });
+
+        const shipping = 0.00; // Assuming free shipping for now
+        let discountAmount = 0.00;
+
+        // 2. Calculate Discount
+        if (appliedCoupon) {
+          const couponData = validCoupons[appliedCoupon];
+          if (couponData.type === 'percent') {
+            discountAmount = subTotal * couponData.value;
+          } else if (couponData.type === 'fixed') {
+            discountAmount = couponData.value;
+          }
+          // Ensure discount doesn't exceed subtotal
+          discountAmount = Math.min(discountAmount, subTotal);
+
+          // Update discount line display
+          discountLine.style.display = 'flex';
+          couponCodeDisplay.textContent = appliedCoupon;
+          discountAmountElement.textContent = `-${formatCurrency(discountAmount)}`;
+        } else {
+          discountLine.style.display = 'none';
+          discountAmount = 0.00;
+        }
+
+        // 3. Calculate Grand Total
+        const grandTotal = subTotal + shipping - discountAmount;
+
+        // 4. Update UI
+        subtotalElement.textContent = formatCurrency(subTotal);
+        shippingElement.textContent = formatCurrency(shipping);
+        grandTotalElement.textContent = formatCurrency(grandTotal);
+      }
+
+      // Function to apply the coupon
+      function handleApplyCoupon() {
+        const inputCode = couponInput.value.trim().toUpperCase();
+
+        if (validCoupons[inputCode]) {
+          if (appliedCoupon === inputCode) {
+            showCouponMessage(`Coupon ${inputCode} is already applied.`, true);
+            return;
+          }
+          appliedCoupon = inputCode;
+          updateCartTotals();
+          showCouponMessage(`Coupon ${inputCode} applied successfully!`, true);
+          couponInput.value = ''; // Clear input field
+        } else {
+          appliedCoupon = null; // Clear any previous coupon if a new one fails
+          updateCartTotals(); // Recalculate without discount
+          showCouponMessage('Invalid coupon code. Please try again.', false);
+        }
+      }
+
+      // --- Event Listeners ---
+
+      // Cart items (quantity and remove)
+      cartItemsContainer.addEventListener('click', (e) => {
+        const button = e.target.closest('.quantity-btn');
+        const removeBtn = e.target.closest('.remove-btn');
+
+        if (button) {
+          const item = button.closest('.cart-item');
+          const qtyInput = item.querySelector('.qty-input');
+          let quantity = parseInt(qtyInput.value);
+
+          if (button.classList.contains('increase-qty')) {
+            quantity++;
+          } else if (button.classList.contains('decrease-qty')) {
+            quantity--;
+          }
+
+          if (quantity < 1) {
+            // If user tries to decrease below 1, remove the item immediately (avoiding alert/confirm)
+            const item = button.closest('.cart-item');
+            item.remove();
+            updateCartTotals();
+            if (document.querySelectorAll('.cart-item').length === 0) {
+              cartItemsContainer.innerHTML = '<p style="padding: 1rem; text-align: center; color: #6b7280;">Your cart is empty.</p>';
+              // Also clear coupon if cart is empty
+              appliedCoupon = null;
+            }
+            return; // Stop processing since item is removed
+          }
+
+          qtyInput.value = quantity;
+          updateItemTotal(item);
+        }
+
+        if (removeBtn) {
+          const item = removeBtn.closest('.cart-item');
+          item.remove();
+          updateCartTotals();
+
+          if (document.querySelectorAll('.cart-item').length === 0) {
+            cartItemsContainer.innerHTML = '<p style="padding: 1rem; text-align: center; color: #6b7280;">Your cart is empty.</p>';
+            // Also clear coupon if cart is empty
+            appliedCoupon = null;
+          }
+        }
+      });
+
+      // Coupon button click
+      applyCouponButton.addEventListener('click', handleApplyCoupon);
+
+
+      // Initial calculation on load
+      document.querySelectorAll('.cart-item').forEach(updateItemTotal);
+      updateCartTotals();
+    });
+  </script>
+</body>
+
+</html>

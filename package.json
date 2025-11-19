@@ -1,0 +1,31 @@
+{
+  "name": "witstuffcrafteeideas",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Kurtd Daniel Bigtas",
+  "type": "module",
+  "main": "api/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon api/index.js",
+    "start": "node api/index.js",
+    "db:push": "drizzle-kit push"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cloudinary": "^2.8.0",
+    "dotenv": "^17.2.3",
+    "drizzle-orm": "^0.44.7",
+    "express": "^5.1.0",
+    "express-mysql-session": "^3.0.3",
+    "express-session": "^1.18.2",
+    "multer": "^2.0.2",
+    "mysql2": "^3.15.3",
+    "node-cron": "^4.2.1",
+    "nodemon": "^3.1.10"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.6"
+  }
+}

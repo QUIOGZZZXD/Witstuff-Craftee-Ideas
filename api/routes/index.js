@@ -1,0 +1,9 @@
+export { default as adminRoutes } from "./admin.js";
+export { default as authRoutes } from "./auth.js";
+export { default as cartRoutes } from "./cart.js";
+export { default as contactMessageRoutes } from "./contact-message.js";
+export { default as itemRoutes } from "./item.js";
+export { default as orderItemRoutes } from "./order-item.js";
+export { default as pagesRoutes } from "./page.js";
+export { default as sellerRoutes } from "./seller.js";
+export { default as userAddressRoutes } from "./address.js";

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Orders | Witstuff Craftee Ideas</title>
+  <link rel="icon" type="image/svg+xml" href="../../assets/wci.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/styles/manage-orders.css">
+  <link rel="stylesheet" href="/styles/toast.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div id="layout-grid">
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="../../assets/Logo.jpg" style="width: 5rem; height: 5rem;border-radius: 999px;" />
+      </div>
+      <div class="sidebar-navigation">
+        <div class="navigation-item">
+          <div class="nav-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="white" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M3 13h8V3H3zM13 21h8v-8h-8zM13 3h8v6h-8zM3 21h8v-4H3z" />
+            </svg>
+          </div>
+          <a href="/seller/dashboard">Dashboard</a>
+        </div>
+
+        <div class="navigation-item">
+          <div class="nav-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="white" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path
+                d="M21 16V8a2 2 0 0 0-1-1.73L13 2.27a2 2 0 0 0-2 0L4 6.27A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.73z" />
+              <path d="M3.27 6.96 12 12.01l8.73-5.05" />
+              <path d="M12 22.08V12" />
+            </svg>
+          </div>
+          <a href="/seller/manage-products">Manage Products</a>
+        </div>
+
+        <div class="navigation-item">
+          <div class="nav-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="white" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M21 15V8a2 2 0 0 0-2-2h-5l-2-3H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z" />
+              <path d="M9 18h6" />
+            </svg>
+          </div>
+          <a href="/seller/manage-orders">Manage Orders</a>
+        </div>
+      </div>
+    </aside>
+    <div class="header">
+      <div class="header-headline">
+        <h1 class="header-title">
+          Manage Orders</h1>
+
+        <p class="header-description">
+          Monitor order transactions
+        </p>
+      </div>
+      <button id="logout-button" class="btn-primary">
+        Log out
+      </button>
+    </div>
+    <main class="main-section">
+      <div class="container">
+        <div class="top-bar">
+          <h2>Order List</h2>
+
+          <div class="left-top-bar">
+            <div class="search-box">
+              <input type="text" placeholder="Search by customer name" id="order-search-input" />
+              <button class="search-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="lucide lucide-search-icon lucide-search">
+                  <path d="m21 21-4.34-4.34" />
+                  <circle cx="11" cy="11" r="8" />
+                </svg></button>
+            </div>
+          </div>
+        </div>
+
+        <table class="seller-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Customer</th>
+              <th>Product</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Payment</th>
+              <th>Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody id="order-table-body">
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+
+  <div class="modal" id="ordDetailModal">
+    <div class="modal-content delete-box" style="width: 30rem;">
+      <p style="font-weight: 500; font-size: 20px">Order Details</p>
+      <p style="text-align: left">
+        Information:</p>
+      <p id="order-detail-content" style="text-align: left;margin-left: 2rem; margin-bottom: 1rem;">
+
+      </p>
+
+      <form id="order-status-form"
+        style="display: flex; flex-direction: column; justify-content: flex-start; align-items: center; ">
+        <p style="width: 100%; text-align: left;">Order Status Update</p>
+        <select name="statusDropdown" id="ordStatusDropdown" style="width: 100%; height: 2rem;">
+          <option value="Pending">Pending</option>
+          <option value="Processing">Processing</option>
+          <option value="Out for Delivery">Out for Delivery</option>
+          <option value="Delivered">Delivered</option>
+          <option value="Cancelled">Cancelled</option>
+        </select>
+        <div class="delete-actions">
+          <button type="submit" class="btn-primary" id="updateOrdDetail">Update</button>
+          <button class="secondary-btn" id="closeOrdDetail" type="button">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="logoutModal">
+    <div class="modal-content delete-box">
+      <div class="circle"></div>
+      <p>Are you sure you want to log out?</p>
+
+      <div class="delete-actions">
+        <form action="/api/auth/logout" method="post">
+          <button class="btn-primary" id="confirmLogout">Yes</button>
+        </form>
+        <button class="secondary-btn" id="cancelLogout">No</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="toast-container"></div>
+  <script src="/scripts/toast.js"></script>
+  <script src="/scripts/log-out-dialog.js"></script>
+  <script>
+    const ordModal = document.getElementById("ordDetailModal");
+    // New global variable to store the ID of the order being viewed/edited
+    let currentOrderID = null;
+    // NEW: Global state to hold all orders
+    let allOrders = [];
+    // NEW: Search input element
+    const searchInput = document.getElementById('order-search-input');
+
+
+    // The element for the status form
+    const orderStatusForm = document.getElementById("order-status-form");
+    // Placeholder for the update endpoint (You will replace this later)
+    const UPDATE_ORDER_STATUS_ENDPOINT_BASE = '/api/order-items';
+
+
+    // on load
+    document.addEventListener("DOMContentLoaded", async () => {
+      await loadOrders();
+      attachFormSubmitListener(); // Attach the new submit listener on load
+      searchInput.addEventListener('input', handleSearch); // Attach search listener
+    });
+
+
+    /**
+     * Renders the order table based on an array of order objects.
+     * Attaches listeners after rendering.
+     * @param {Array<Object>} ordersToRender - The array of orders to display.
+     */
+    function renderOrders(ordersToRender) {
+      const tableBody = document.getElementById("order-table-body");
+      tableBody.innerHTML = ""; // Clear existing rows
+
+      if (!Array.isArray(ordersToRender) || ordersToRender.length === 0) {
+        tableBody.innerHTML = '<tr><td colspan="11">No orders found.</td></tr>';
+        return;
+      }
+
+      ordersToRender.forEach(order_item => {
+        const row = document.createElement("tr");
+        // Add data-id attribute to the row for easier retrieval
+        row.dataset.id = order_item.order_item_id;
+
+        console.log(order_item)
+
+        row.innerHTML = `
+                    <td>${order_item.order_item_id}</td>
+                    <td>${order_item.customer_full_name}</td>
+                    <td>${order_item.item_name}</td>
+                    <td>${order_item.quantity}</td>
+                    <td>${order_item.price}</td>
+                    <td>${order_item.total_price}</td>
+                    <td><span class="status">${order_item.status}</span></td>
+                    <td>${order_item.payment_method}</td>
+                    <td>${new Date(order_item.date).toDateString()}</td>
+                    <td>
+                        <button class="edit-btn openOrdDetail">View Details</button>
+                    </td>
+                `;
+
+        tableBody.appendChild(row);
+      });
+
+      attachActionButtons();
+    }
+
+    async function loadOrders() {
+      const tableBody = document.getElementById("order-table-body");
+      tableBody.innerHTML = '<tr><td colspan="11">Loading orders...</td></tr>';
+      allOrders = []; // Clear previous data
+
+      try {
+        // ✅ Your API endpoint here
+        const res = await fetch("/api/sellers/order-items");
+
+        if (!res.ok) throw new Error("Failed to fetch orders");
+
+        const result = await res.json();
+        const orders = result.data.order_items;
+
+        // Store the full list
+        allOrders = orders;
+
+        // Render the full list initially
+        renderOrders(allOrders);
+
+      } catch (err) {
+        console.error(err);
+        tableBody.innerHTML = `<tr><td colspan="11" style="color: red;">Error: ${err.message || 'Could not load orders'}</td></tr>`;
+      }
+    }
+
+    /**
+     * Handles the client-side filtering based on the search input by customer name.
+     */
+    function handleSearch() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+
+      if (searchTerm === '') {
+        // If search box is empty, render all products
+        renderOrders(allOrders);
+        return;
+      }
+
+      // Filter the full list of orders by customer_full_name
+      const filteredOrders = allOrders.filter(order => {
+        const customerName = order.customer_full_name ? order.customer_full_name.toLowerCase() : '';
+        return customerName.includes(searchTerm);
+      });
+
+      renderOrders(filteredOrders);
+    }
+
+    // for dialogs
+    function attachActionButtons() {
+
+      // Open ord details Modal (all edit buttons)
+      document.querySelectorAll(".openOrdDetail").forEach(btn => {
+        btn.onclick = (e) => {
+          const row = e.target.closest("tr");
+          const cells = row.querySelectorAll("td");
+
+          // --- Capture the Order ID and store it globally ---
+          const orderID = row.dataset.id; // Get ID from the new data-id attribute
+          currentOrderID = orderID;
+
+          const customer = cells[1].textContent.trim();
+          const item = cells[3].textContent.trim();
+          const quantity = cells[4].textContent.trim();
+          const price = cells[5].textContent.trim();
+          const totalPrice = cells[6].textContent.trim();
+          const status = cells[7].textContent.trim();
+          const paymentMethod = cells[8].textContent.trim();
+          const date = cells[9].textContent.trim();
+
+          document.getElementById("order-detail-content").innerHTML = `
+                        <ul>
+                            <li>Information:</li>
+                            <li>Order ID: ${orderID}</li>
+                            <li>Customer Name: ${customer}</li>
+                            <li>Payment Method: ${paymentMethod}</li>
+                            <li>Quantity: ${quantity}</li>
+                            <li>Price: ${price}</li>
+                            <li>Total Price: ${totalPrice}</li>
+                            <li>Product Ordered: ${item}</li>
+                            <li>Order Date: ${date}</li>
+                        </ul>
+                    `;
+
+          // Set the current status on the dropdown
+          document.getElementById("ordStatusDropdown").value = status;
+
+          ordModal.style.display = "flex";
+        };
+      });
+
+      // Cancel button click
+      document.getElementById("closeOrdDetail").onclick = () => {
+        ordModal.style.display = "none";
+        document.getElementById("order-detail-content").innerHTML = '';
+        currentOrderID = null;
+      }
+
+      // Close modal only when clicking the background
+      ordModal.addEventListener("click", function (event) {
+        if (event.target === this) {
+          ordModal.style.display = "none";
+          document.getElementById("order-detail-content").innerHTML = '';
+          currentOrderID = null;
+        }
+      });
+    }
+
+    // --- New Functionality: Status Update ---
+
+    function attachFormSubmitListener() {
+      orderStatusForm.addEventListener('submit', async function (e) {
+        e.preventDefault(); // Stop the form from submitting traditionally
+
+        const newStatus = document.getElementById("ordStatusDropdown").value;
+
+        if (!currentOrderID) {
+          alert("Error: No order selected for update.");
+          return;
+        }
+
+        // Construct the payload and endpoint
+        const payload = { status: newStatus };
+        // The API request will look like: PATCH /api/order-items/ORDER_ID/status
+        const finalEndpoint = `${UPDATE_ORDER_STATUS_ENDPOINT_BASE}/${currentOrderID}/status`;
+
+        try {
+          const response = await fetch(finalEndpoint, {
+            method: 'PATCH', // Assuming PATCH or PUT is used for updates
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+
+          if (!response.ok) {
+            const errorData = await response.json().catch(() => ({ message: 'Server error' }));
+            throw new Error(errorData.message || `Failed to update status. Status: ${response.status}`);
+          }
+
+          // Success handling
+          showToast(`Order ${currentOrderID} status updated to ${newStatus.toUpperCase()}!`);
+
+          // Close the modal, reset ID, and refresh the list
+          ordModal.style.display = "none";
+          document.getElementById("order-detail-content").innerHTML = '';
+          currentOrderID = null;
+          await loadOrders(); // Refreshes the table with new data
+
+        } catch (error) {
+          console.error('Status Update Error:', error);
+          showToast(`${error.message}`, 'error');
+        }
+      });
+
+      // Remove the placeholder function that was closing the modal instantly
+      document.getElementById("updateOrdDetail").onclick = null;
+    }
+  </script>
+</body>
+
+</html>

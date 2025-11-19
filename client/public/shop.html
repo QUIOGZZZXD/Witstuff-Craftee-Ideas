@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop | Witstuff Cracftee Ideas</title>
+  <link rel="stylesheet" href="../styles/landing-page.css">
+  <link rel="stylesheet" href="../styles/toast.css">
+  <link rel="shortcut icon" href="../assets/wci.ico" type="image/x-icon">
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+    <header class="navbar">
+    <div class="logo">
+        <div
+          class="image-container"
+          
+        >
+          <img
+            src="../../assets/Logo.jpg"
+          />
+        </div>
+        <h1 style="color: #a6785d">Witstuff Craftee Ideas</h1>
+      </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a class="active" href="/shop">Shop</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+      </ul>
+    </nav>
+    <div class="nav-icons">
+      <span><a href="/cart">🛒</a></span>
+    </div>
+  </header>
+
+  <!-- HERO CAROUSEL -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Shop</h1>
+      <p>Discover our curated collection of handmade and unique items crafted by local sellers.</p>
+    </div>
+  </section>
+
+
+  <!-- PRODUCTS -->
+  <section class="featured">
+    <div class="product-toolbar">
+      <div class="product-toolbar-dot-items">
+        <div class="product-toolbar-dots"></div>
+        <div class="product-toolbar-dots"></div>
+        <div class="product-toolbar-dots"></div>
+      </div>
+      <button class="product-alphabetical">Alphabetically A-Z</button>
+    </div>
+
+    <div class="products">
+      
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-col">
+          <h1 style="color: #A6785D ">Witstuff Craftee Ideas</h1>
+        <p>We create fresh, beautifully arranged bouquets that bring joy and elegance to every moment. Every bloom is crafted with care, passion, and a touch of nature’s charm.</p>
+        <div class="socials">
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" /></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" /></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" /></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" /></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Information</h4>
+        <ul>
+          <li><a href="#">Our Company</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Our Services</a></li>
+          <li><a href="#">Why we</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quicklink</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">Cart</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Online Support</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">Return Policy</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>See Information</h4>
+        <p>Bringing smiles, one bouquet at a time. Fresh, vibrant flowers crafted with care for every occasion.</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>Copyright © 2025. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div id="toast-container"></div>
+
+
+  <script src="../scripts/toast.js"></script>
+  <script src="../scripts/check-auth.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    const productsContainer = document.querySelector(".products");
+    const sortBtn = document.querySelector(".product-alphabetical");
+    let productCards = [];
+    let ascending = true; // initial sort order
+
+    // Load products
+    async function loadProducts() {
+      productsContainer.innerHTML = ""; // clear previous
+      try {
+        const response = await fetch("/api/items");
+        if (!response.ok) throw new Error("Failed to load products");
+        const { data } = await response.json();
+
+        if (!data.items || data.items.length === 0) {
+          const emptyMsg = document.createElement("p");
+
+          emptyMsg.textContent = "No approved items available.";
+          productsContainer.appendChild(emptyMsg);
+            productsContainer.style.gridTemplateColumns = "1fr";
+          return;
+        }
+
+        // Build cards
+        productCards = data.items.map((item) => {
+          const card = document.createElement("div");
+          card.className = "product-card";
+
+          const imgBox = document.createElement("div");
+          imgBox.className = "img-box";
+
+          const img = document.createElement("img");
+          img.src = item.image_url ? item.image_url : "../assets/placeholder.png";
+          img.alt = item.name;
+
+          const info = document.createElement("div");
+          info.className = "product-info";
+
+          const nameEl = document.createElement("h4");
+          nameEl.textContent = item.name;
+
+          const priceEl = document.createElement("p");
+          priceEl.textContent = "Php " + parseFloat(item.price).toLocaleString();
+
+          const btn = document.createElement("button");
+          btn.className = "btn small";
+          btn.textContent = "Add to Cart";
+          btn.addEventListener("click", async () => {
+            try {
+              const response = await fetch("/api/auth/check-session", {
+                method: "GET",
+                credentials: "include",
+              });
+              const { data } = await response.json();
+
+              if (!data.loggedIn) {
+                window.location.href = "/login";
+              }
+
+              console.log(item)
+
+              const addResponse = await fetch("/api/cart", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ item_id: item.item_id, quantity: 1 }),
+              });
+
+              const {error: addToCartError} = await addResponse.json();
+
+              if (addToCartError) {
+                showToast(addToCartError, "error");
+              } else {
+                window.location.href = "/cart";
+              }
+              
+            } catch (err) {
+              console.error(err);
+            }
+          });
+
+
+          imgBox.appendChild(img);
+          info.appendChild(nameEl);
+          info.appendChild(priceEl);
+          info.appendChild(btn);
+
+          card.appendChild(imgBox);
+          card.appendChild(info);
+
+          return card;
+        });
+
+        // Append initial order
+        productCards.forEach(card => productsContainer.appendChild(card));
+
+      } catch (err) {
+        console.error(err);
+        const errorMsg = document.createElement("p");
+        errorMsg.textContent = "Error loading products.";
+        productsContainer.appendChild(errorMsg);
+      }
+    }
+
+    // Sort function (toggle)
+    sortBtn.addEventListener("click", () => {
+      productCards.sort((a, b) => {
+        const nameA = a.querySelector("h4").textContent.toUpperCase();
+        const nameB = b.querySelector("h4").textContent.toUpperCase();
+        return ascending ? nameA.localeCompare(nameB) : nameB.localeCompare(nameA);
+      });
+
+      // Clear container and re-append sorted cards
+      productsContainer.innerHTML = "";
+      productCards.forEach(card => productsContainer.appendChild(card));
+
+      // Toggle order and button text
+      ascending = !ascending;
+      sortBtn.textContent = ascending ? "Alphabetically A-Z" : "Alphabetically Z-A";
+    });
+
+    loadProducts();
+  });
+</script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+:root {
+    --rose-pink: #E3A5B9;
+    --cream-white: #FFF7F0;
+    --lavender-mist: #DBC8F0;
+    --sage-green: #BFD8C1;
+    --warm-mocha: #A6785D;
+    --warm-mocha-hover: #8e6653;
+    --text-primary: #2D2D2D;
+    --text-secondary: #6B6B6B;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background-color: var(--cream-white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+#app {
+    min-height: 100vh;
+}
+
+.form-title {
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+}
+
+.form-subtitle {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+    letter-spacing: 0.2px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 16px;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 14px 16px 14px 44px;
+    border: 1px solid #E0E0E0;
+    background-color: #F8F8F8;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+    border-radius: 4px;
+}
+
+.input-wrapper input::placeholder {
+    color: #A0A0A0;
+    font-weight: 300;
+}
+
+.input-wrapper input:focus {
+    outline: none;
+    border-color: var(--sage-green);
+    background-color: #FFFFFF;
+}
+
+.btn-primary {
+    width: fit-content;
+    background-color: var(--text-primary);
+    padding: 1rem 2rem;
+    color: var(--cream-white);
+    border: none;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.3px;
+    border-radius: 4px;
+}
+
+.btn-primary:hover {
+    background-color: #1a1a1a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 640px) {
+    .form-title {
+        font-size: 28px;
+    }
+
+    .form-subtitle {
+        font-size: 13px;
+    }
+}

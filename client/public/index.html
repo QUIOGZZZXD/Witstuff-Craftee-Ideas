@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home | Witstuff Cracftee Ideas</title>
+    <link rel="stylesheet" href="../styles/landing-page.css" />
+    <link rel="shortcut icon" href="../assets/wci.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <script src="../scripts/carousel.js"></script>
+
+    <!-- NAVIGATION -->
+    <header class="navbar">
+      <div class="logo">
+        <div
+          class="image-container"
+          
+        >
+          <img
+            src="../../assets/Logo.jpg"
+          />
+        </div>
+        <h1 style="color: #a6785d">Witstuff Craftee Ideas</h1>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a class="active" href="/">Home</a></li>
+          <li><a href="/shop">Shop</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </nav>
+      <div class="nav-icons">
+        <span><a href="/cart">🛒</a></span>
+      </div>
+    </header>
+
+    <!-- HERO CAROUSEL -->
+    <section class="hero-carousel">
+      <button class="arrow left">❮</button>
+
+      <div class="hero-slides">
+        <div class="hero-slide active">
+          <img
+            src="../assets/Sunshine%20Daisy%20Puff.jpg"
+            alt="Quality Flowers"
+            class="hero-bg"
+          />
+          <div class="overlay"></div>
+          <div class="hero-content">
+            <h1 style="color: #a6785d; font-size: 75px">Quality Flowers</h1>
+            <p>
+              Fresh, vibrant, and thoughtfully arranged — every bouquet is
+              crafted to bring beauty and joy to your special moments.
+            </p>
+          </div>
+        </div>
+
+        <div class="hero-slide">
+          <img
+            src="../assets/Snowy Daisy Pop.jpg"
+            alt="Deal of the Day"
+            class="hero-bg"
+          />
+          <div class="overlay"></div>
+          <div class="hero-content">
+            <h1 style="color: #a6785d; font-size: 75px">Deal of the Day</h1>
+            <p>
+              Discover today’s exclusive floral deals — seasonal blooms for
+              every occasion.”.
+            </p>
+          </div>
+        </div>
+
+        <div class="hero-slide">
+          <img
+            src="../assets/Minty%20Lily%20Freshies.jpg"
+            alt="Exotic Arrangements"
+            class="hero-bg"
+          />
+          <div class="overlay"></div>
+          <div class="hero-content">
+            <h1 style="color: #a6785d; font-size: 75px">Exotic Arrangements</h1>
+            <p>
+              Bring sophistication home with our handpicked exotic flower
+              arrangements.”.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <button class="arrow right">❯</button>
+    </section>
+
+    <!-- IMAGE GRID -->
+    <section class="landing-page-images">
+      <div class="ld-container">
+        <div class="left-side">
+          <img src="../assets/Sunshine%20Daisy%20Puff.jpg" alt="flower" />
+        </div>
+        <div class="right-side">
+          <div class="upper-side">
+            <!-- 2 images-->
+            <div class="u-left-side">
+              <img
+                src="../assets/Soft%20Pink%20Blossom%20Charm.jpg"
+                alt="flower"
+              />
+            </div>
+            <div class="u-right-side">
+              <img src="../assets/Honey%20Sunbeam%20Blooms.jpg" alt="flower" />
+            </div>
+          </div>
+          <div class="lower-side">
+            <!-- 2 images-->
+            <div class="l-left-side">
+              <img src="../assets/Rosy%20Spring%20Delight.jpg" alt="flower" />
+            </div>
+            <div class="l-right-side">
+              <img src="../assets/Golden%20Sunflower%20Joy.jpg" alt="flower" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED PRODUCTS -->
+    <section class="featured" id="feature-products">
+      <h3>Wonderful Gifts</h3>
+      <h2>Featured Products</h2>
+
+      <div class="products"></div>
+    </section>
+
+    <!-- DEAL OF THE DAY -->
+    <section class="deal">
+      <h2>DEAL OF THE DAY</h2>
+      <div class="timer" id="countdown">00 : 00 : 00 : 00</div>
+
+      <div class="products dotd" style="padding-block: 1rem"></div>
+    </section>
+
+    <!-- Our History Section -->
+    <section class="our-history-section" id="our-history-section">
+      <div class="history-title-section">
+        <h1 style="color: #a6785d">OUR HISTORY</h1>
+        <h5 id="history-title-description">
+          Every beautiful bloom has a story—and so do we. What started as a
+          simple passion for arranging flowers grew into a vision of spreading
+          joy through every bouquet. From small handcrafted designs made at home
+          to a growing collection of elegant floral arrangements, we’ve always
+          believed that flowers speak the language of love, gratitude, and
+          celebration. Over the years, our team has dedicated time to mastering
+          the art of floral design—combining creativity, color, and care in
+          every petal. Today, we continue to craft meaningful arrangements that
+          turn ordinary moments into unforgettable memories. Because for us,
+          it’s more than just flowers—it’s about creating emotions, one bouquet
+          at a time. 🌷
+        </h5>
+      </div>
+      <div class="history-section">
+        <div class="history-card">
+          <div class="history-img">
+            <img src="../assets/Rainbow%20Bloom%20Mix.jpg" alt="flower" />
+          </div>
+        </div>
+
+        <div class="history-card">
+          <div class="history-img">
+            <img src="../assets/Blue%20Hydrangea%20Bliss.jpg" alt="flower" />
+          </div>
+        </div>
+
+        <div class="history-card">
+          <div class="history-img">
+            <img src="../assets/Lavender%20Dream%20Blooms.jpg" alt="flower" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr
+      style="
+        border: none;
+        border-top: 1px dotted #a6785d;
+        width: 60%;
+        margin: 20px auto;
+      "
+    />
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+      <div class="testimonials-title-section">
+        <h2 style="font-weight: normal; text-align: center">Testimonials</h2>
+        <h1>What's our customer says?</h1>
+      </div>
+
+      <div class="testimonials-carousel">
+        <div class="testimonials-content">
+          <div class="testimonial-card active">
+            <div class="avatar">
+              <img src="../assets/sample-user/gibo.jpg" alt="customer" />
+            </div>
+            <p>
+              “The bouquets were absolutely stunning! The freshness and
+              arrangement made my anniversary extra special.”
+            </p>
+            <div class="testimonial-user">
+              <h3>Cha Ji-Hun</h3>
+              <span>Event Coordinator</span>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="avatar">
+              <img src="../assets/sample-user/jerome.jpeg" alt="customer" />
+            </div>
+            <p>
+              “I ordered last minute and still got my flowers on time —
+              beautifully wrapped and smelled amazing!”
+            </p>
+            <div class="testimonial-user">
+              <h3>Kim Hana</h3>
+              <span>Interior Designer</span>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="avatar">
+              <img src="../assets/sample-user/kenneth.jpg" alt="customer" />
+            </div>
+            <p>
+              “The arrangements are always elegant and unique. You can really
+              see the passion behind every bouquet.”
+            </p>
+            <div class="testimonial-user">
+              <h3>Lee Min</h3>
+              <span>Wedding Photographer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="testimonial-card-buttons">
+        <button class="prev">&#10094;</button>
+
+        <button class="next">&#10095;</button>
+      </div>
+    </section>
+
+    <!-- Newsletter Section
+    <section class="newsletter">
+      <div class="newsletter-content">
+        <div style="text-align: start">
+          <h2>SEND NEWS LETTER</h2>
+          <p>Get fresh blooms & exclusive offers straight to your inbox.</p>
+        </div>
+        <div>
+          <form class="newsletter-form">
+            <input type="email" placeholder="sample@gmail.com" required />
+            <button type="submit" class="btn-dark">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Blog Section -->
+    <section class="blog-section" id="blogs">
+      <h2 style="font-weight: 100">Blogs</h2>
+      <h1 style="color: #a6785d">Our latest post</h1>
+      <div class="blogs-container">
+        <div class="blog-card">
+          <div class="blog-img">
+            <img src="../assets/Snowy Daisy Pop.jpg" alt="flower" />
+          </div>
+          <div class="blog-content">
+            <h3>Daisy Pop</h3>
+            <p>
+              Bright, cheerful, and full of charm — the Daisy Pop Bouquet brings
+              sunshine to any day. Featuring a playful mix of fresh daisies and
+              vibrant blooms, it’s the perfect way to express happiness,
+              friendship, and pure joy.
+            </p>
+            <button class="btn-blog">Read more</button>
+          </div>
+        </div>
+
+        <div class="blog-card">
+          <div class="blog-img">
+            <img src="../assets/Pastel%20Tulip%20Dreamies.jpg" alt="flower" />
+          </div>
+          <div class="blog-content">
+            <h3>Pastel Tulip</h3>
+            <p>
+              Soft, graceful, and effortlessly elegant — the Pastel Tulip
+              Bouquet captures the beauty of spring in every petal. With its
+              gentle shades and timeless charm, it’s perfect for celebrating new
+              beginnings, love, and serenity.
+            </p>
+            <button class="btn-blog">Read more</button>
+          </div>
+        </div>
+
+        <div class="blog-card">
+          <div class="blog-img">
+            <img src="../assets/Minty%20Lily%20Freshies.jpg" alt="flower" />
+          </div>
+          <div class="blog-content">
+            <h3>Minty Lily Freshies</h3>
+            <p>
+              Crisp, calming, and refreshingly beautiful — the Minty Lily
+              Freshies blend the cool tones of mint with the pure elegance of
+              lilies. Perfect for bringing a breath of freshness to any space or
+              gifting serenity to someone special.
+            </p>
+            <button class="btn-blog">Read more</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="images-section">
+      <img src="../assets/Blue%20Hydrangea%20Bliss.jpg" alt="flower" />
+      <img src="../assets/Soft%20Pink%20Blossom%20Charm.jpg" alt="flower" />
+      <img src="../assets/Sunshine%20Daisy%20Puff.jpg" alt="flower" />
+      <img src="../assets/Pink%20Tulip%20Sweeties.jpg" alt="flower" />
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-col">
+          <h1 style="color: #a6785d">Witstuff Craftee Ideas</h1>
+
+          <p>
+            We create fresh, beautifully arranged bouquets that bring joy and
+            elegance to every moment. Every bloom is crafted with care, passion,
+            and a touch of nature’s charm.
+          </p>
+          <div class="socials">
+            <a href="#"
+              ><img
+                src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
+                alt="Facebook"
+            /></a>
+            <a href="#"
+              ><img
+                src="https://cdn-icons-png.flaticon.com/512/733/733579.png"
+                alt="Twitter"
+            /></a>
+            <a href="#"
+              ><img
+                src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"
+                alt="Instagram"
+            /></a>
+            <a href="#"
+              ><img
+                src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"
+                alt="YouTube"
+            /></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Information</h4>
+          <ul>
+            <li><a href="#">Our Company</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Our Services</a></li>
+            <li><a href="#">Why we</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quicklink</h4>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Cart</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Online Support</a></li>
+            <li><a href="#">Shipping Policy</a></li>
+            <li><a href="#">Return Policy</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>See Information</h4>
+          <p>
+            Bringing smiles, one bouquet at a time. Fresh, vibrant flowers
+            crafted with care for every occasion.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>Copyright © 2025. All rights reserved.</p>
+      </div>
+    </footer>
+    <script src="../scripts/carousel.js"></script>
+    <script src="../scripts/check-auth.js"></script>
+    <script src="../scripts/count-down-timer.js"></script>
+    <script>
+      // Helper to shuffle an array
+      function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+      }
+
+      async function loadProducts() {
+        const productsContainer = document.querySelector(
+          ".products:not(.dotd)"
+        );
+        const dealContainer = document.querySelector(".products.dotd");
+
+        productsContainer.innerHTML = "";
+        dealContainer.innerHTML = "";
+
+        try {
+          const limit = 6;
+          const response = await fetch(`/api/items?limit=${limit}`);
+          if (!response.ok) throw new Error("Failed to load products");
+          const { data } = await response.json();
+
+          if (!data.items || data.items.length === 0) {
+            const emptyMsg = document.createElement("p");
+            emptyMsg.className = "empty-message";
+            emptyMsg.textContent = "No approved items available.";
+            productsContainer.appendChild(emptyMsg);
+            productsContainer.style.gridTemplateColumns = "1fr";
+            return;
+          }
+
+          // Function to create a product card
+          function createCard(item) {
+            const card = document.createElement("div");
+            card.className = "product-card";
+
+            const imgBox = document.createElement("div");
+            imgBox.className = "img-box";
+
+            const img = document.createElement("img");
+            img.src = item.image_url
+              ? item.image_url
+              : "../assets/placeholder.png";
+            img.alt = item.name;
+
+            const info = document.createElement("div");
+            info.className = "product-info";
+
+            const nameEl = document.createElement("h4");
+            nameEl.textContent = item.name;
+
+            const priceEl = document.createElement("p");
+            priceEl.textContent =
+              "Php " + parseFloat(item.price).toLocaleString();
+
+            const btn = document.createElement("button");
+            btn.className = "btn small";
+            btn.textContent = "Add to Cart";
+            btn.addEventListener("click", async () => {
+              try {
+                const response = await fetch("/api/auth/check-session", {
+                  method: "GET",
+                  credentials: "include",
+                });
+                const { data } = await response.json();
+
+                if (!data.loggedIn) {
+                  window.location.href = "/login";
+                  return;
+                }
+
+                const addResponse = await fetch("/api/cart", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ item_id: item.item_id, quantity: 1 }),
+                });
+
+                const { error: addToCartError } = await addResponse.json();
+
+                if (addToCartError) {
+                  showToast(addToCartError, "error");
+                } else {
+                  window.location.href = "/cart";
+                }
+              } catch (err) {
+                console.error(err);
+              }
+            });
+
+            imgBox.appendChild(img);
+            info.appendChild(nameEl);
+            info.appendChild(priceEl);
+            info.appendChild(btn);
+            card.appendChild(imgBox);
+            card.appendChild(info);
+
+            return card;
+          }
+
+          // Populate all products
+          data.items.forEach((item) => {
+            const card = createCard(item);
+            productsContainer.appendChild(card);
+          });
+
+          // Populate 3 random deals
+          const shuffledItems = shuffleArray([...data.items]);
+          const dealItems = shuffledItems.slice(0, 3);
+
+          dealItems.forEach((item) => {
+            const card = createCard(item);
+            dealContainer.appendChild(card);
+          });
+        } catch (err) {
+          console.error(err);
+          const errorMsg = document.createElement("p");
+          errorMsg.textContent = "Error loading products.";
+          productsContainer.appendChild(errorMsg);
+        }
+      }
+
+      loadProducts();
+    </script>
+  </body>
+</html>

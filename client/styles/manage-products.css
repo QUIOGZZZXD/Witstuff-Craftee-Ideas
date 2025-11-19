@@ -1,0 +1,35 @@
+@import url('base.css');
+@import url('main-layout.css');
+@import url('table-component.css');
+@import url('modal.css');
+
+.status.approved {
+    background: #d5ffd5;
+    color: #0b8f08;
+}
+
+.status.pending {
+    color: rgb(236, 154, 0);
+    background: rgb(255, 230, 183);
+}
+
+.status.rejected {
+    background: rgb(233, 233, 233);
+    color: rgb(107, 107, 107);
+}
+
+.action-btn-group>button+button {
+    margin-left: .3rem;
+}
+
+.btn-primary {
+    padding: .5rem 1rem;
+}
+
+.secondary-btn {
+    padding: .5rem 1rem;
+}
+
+.delete-actions {
+    padding-top: 1rem;
+}

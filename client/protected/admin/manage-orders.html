@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Orders | Witstuff Craftee Ideas</title>
+  <link rel="icon" type="image/svg+xml" href="../../assets/wci.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/styles/manage-orders.css">
+  <link rel="stylesheet" href="/styles/toast.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div id="layout-grid">
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="../../assets/Logo.jpg" style="width: 5rem; height: 5rem;border-radius: 999px;" />
+      </div>
+      <div class="sidebar-navigation">
+        <div class="navigation-item">
+          <div class="nav-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="white" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M3 13h8V3H3zM13 21h8v-8h-8zM13 3h8v6h-8zM3 21h8v-4H3z" />
+            </svg>
+          </div>
+          <a href="/admin/dashboard">Dashboard</a>
+        </div>
+
+        <div class="navigation-item">
+          <div class="nav-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="white" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </div>
+          <a href="/admin/manage-sellers">Manage Sellers</a>
+        </div>
+
+        <div class="navigation-item">
+          <div class="nav-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="white" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path
+                d="M21 16V8a2 2 0 0 0-1-1.73L13 2.27a2 2 0 0 0-2 0L4 6.27A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.73z" />
+              <path d="M3.27 6.96 12 12.01l8.73-5.05" />
+              <path d="M12 22.08V12" />
+            </svg>
+          </div>
+          <a href="/admin/manage-products">Manage Products</a>
+        </div>
+
+        <div class="navigation-item">
+          <div class="nav-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="white" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M21 15V8a2 2 0 0 0-2-2h-5l-2-3H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z" />
+              <path d="M9 18h6" />
+            </svg>
+          </div>
+          <a href="/admin/manage-orders">Manage Orders</a>
+        </div>
+      </div>
+    </aside>
+    <div class="header">
+      <div class="header-headline">
+        <h1 class="header-title">
+          Manage Orders</h1>
+
+        <p class="header-description">
+          Monitor order transactions
+        </p>
+      </div>
+      <button id="logout-button" class="btn-primary">
+        Log out
+      </button>
+    </div>
+    <main class="main-section">
+      <div class="container">
+        <div class="top-bar">
+          <h2>Order List</h2>
+
+          <div class="left-top-bar">
+            <div class="search-box">
+              <input type="text" placeholder="Search by customer name" id="customer-search-input" />
+              <button class="search-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="lucide lucide-search-icon lucide-search">
+                  <path d="m21 21-4.34-4.34" />
+                  <circle cx="11" cy="11" r="8" />
+                </svg></button>
+            </div>
+          </div>
+        </div>
+
+        <table class="seller-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Customer</th>
+              <th>Seller</th>
+              <th>Product</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Payment</th>
+              <th>Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody id="order-table-body">
+            <tr>
+              <td>SLR-001</td>
+              <td>Maria Santos</td>
+              <td>Bloom Haven</td>
+              <td>Red Rose Bouquet</td>
+              <td>1,850</td>
+              <td>100</td>
+              <td>1,850</td>
+              <td><span class="status active">Delivered</span></td>
+              <td>Gcash</td>
+              <td>Oct. 18, 2025</td>
+              <td>
+                <button class="edit-btn openOrdDetail">View Details</button>
+              </td>
+            </tr>
+            <tr>
+              <td>SLR-002</td>
+              <td>John Smith</td>
+              <td>Crafty Corner</td>
+              <td>Wooden Clock</td>
+              <td>2</td>
+              <td>500</td>
+              <td>1,000</td>
+              <td><span class="status active">Processing</span></td>
+              <td>PayPal</td>
+              <td>Oct. 19, 2025</td>
+              <td>
+                <button class="edit-btn openOrdDetail">View Details</button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+
+  <div class="modal" id="ordDetailModal">
+    <div class="modal-content delete-box" style="width: 30rem;">
+      <p style="font-weight: 500; font-size: 20px">Order Details</p>
+      <p style="text-align: left">
+        Information:</p>
+      <p id="order-detail-content" style="text-align: left;margin-left: 2rem; margin-bottom: 1rem;">
+
+      </p>
+
+      <form id="order-status-form"
+        style="display: flex; flex-direction: column; justify-content: flex-start; align-items: center; ">
+        <p style="width: 100%; text-align: left;">Order Status Update</p>
+        <select name="statusDropdown" id="ordStatusDropdown" style="width: 100%; height: 2rem;">
+          <option value="Pending">Pending</option>
+          <option value="Processing">Processing</option>
+          <option value="Out for Delivery">Out for Delivery</option>
+          <option value="Delivered">Delivered</option>
+          <option value="Cancelled">Cancelled</option>
+        </select>
+        <div class="delete-actions">
+          <button type="submit" class="btn-primary" id="updateOrdDetail">Update</button>
+          <button class="secondary-btn" id="closeOrdDetail" type="button">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="logoutModal">
+    <div class="modal-content delete-box">
+      <div class="circle"></div>
+      <p>Are you sure you want to log out?</p>
+
+      <div class="delete-actions">
+        <form action="/api/auth/logout" method="post">
+          <button class="btn-primary" id="confirmLogout">Yes</button>
+        </form>
+        <button class="secondary-btn" id="cancelLogout">No</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="toast-container"></div>
+  <script src="/scripts/toast.js"></script>
+  <script src="/scripts/log-out-dialog.js"></script>
+  <script>
+    const ordModal = document.getElementById("ordDetailModal");
+    let currentOrderID = null;
+    const orderStatusForm = document.getElementById("order-status-form");
+    const UPDATE_ORDER_STATUS_ENDPOINT_BASE = '/api/order-items';
+
+    // --- New Search Elements ---
+    const customerSearchInput = document.getElementById("customer-search-input");
+    const orderTableBody = document.getElementById("order-table-body");
+    let allOrderRows = []; // Array to store all table rows for filtering
+
+    // on load
+    document.addEventListener("DOMContentLoaded", async () => {
+      await loadOrders();
+      attachFormSubmitListener();
+      attachSearchListener(); // ✅ Attach the new search listener
+    });
+
+    async function loadOrders() {
+      try {
+        // The existing mock row is removed if data is fetched.
+        // For demonstration, I will keep the existing mock data in the HTML
+        // and just populate 'allOrderRows' with the rows in the table.
+        const res = await fetch("/api/admins/order-items");
+        let dataToUse = null;
+
+        if (res.ok) {
+          const result = await res.json();
+          dataToUse = result.data.order_items;
+        } else {
+          // Fallback or error handling if fetch fails, but let's assume success
+          // If you use the fetch, ensure you clear the HTML mock data.
+          // For now, I'll clear and re-populate with the fetched data if available.
+        }
+
+        orderTableBody.innerHTML = ""; // Clear existing rows
+
+        // If you have actual data from the API, use it.
+        if (dataToUse && dataToUse.length > 0) {
+          dataToUse.forEach(order_item => {
+            const row = document.createElement("tr");
+            row.dataset.id = order_item.order_item_id;
+            row.innerHTML = `
+                            <td>${order_item.order_item_id}</td>
+                            <td>${order_item.customer_full_name}</td>
+                            <td>${order_item.seller_name}</td>
+                            <td>${order_item.item_name}</td>
+                            <td>${order_item.quantity}</td>
+                            <td>${order_item.price}</td>
+                            <td>${order_item.total_price}</td>
+                            <td><span class="status">${order_item.status}</span></td>
+                            <td>${order_item.payment_method}</td>
+                            <td>${new Date(order_item.date).toDateString()}</td>
+                            <td>
+                                <button class="edit-btn openOrdDetail">View Details</button>
+                            </td>
+                        `;
+            orderTableBody.appendChild(row);
+          });
+        }
+
+        // Store all rows for searching
+        allOrderRows = Array.from(orderTableBody.querySelectorAll('tr'));
+
+        attachActionButtons();
+      } catch (err) {
+        console.error(err);
+        // If fetch fails, populate from existing HTML rows (if any)
+        allOrderRows = Array.from(orderTableBody.querySelectorAll('tr'));
+        attachActionButtons();
+      }
+    }
+
+    // ✅ New Search Functionality
+    function attachSearchListener() {
+      customerSearchInput.addEventListener('keyup', () => {
+        const searchTerm = customerSearchInput.value.toLowerCase().trim();
+        filterOrders(searchTerm);
+      });
+    }
+
+    function filterOrders(searchTerm) {
+      allOrderRows.forEach(row => {
+        // The customer name is in the second <td> (index 1)
+        const customerNameCell = row.querySelector('td:nth-child(2)');
+        if (customerNameCell) {
+          const customerName = customerNameCell.textContent.toLowerCase();
+          if (customerName.includes(searchTerm)) {
+            row.style.display = ''; // Show the row
+          } else {
+            row.style.display = 'none'; // Hide the row
+          }
+        }
+      });
+    }
+
+
+    // for dialogs
+    function attachActionButtons() {
+
+      // Open ord details Modal (all edit buttons)
+      document.querySelectorAll(".openOrdDetail").forEach(btn => {
+        btn.onclick = (e) => {
+          const row = e.target.closest("tr");
+          const cells = row.querySelectorAll("td");
+
+          // --- Capture the Order ID and store it globally ---
+          // Assuming you have a hidden ID or get it from the first cell
+          // If you fetch from API, you get it from data-id
+          const orderID = row.dataset.id || cells[0].textContent.trim();
+          currentOrderID = orderID;
+
+          const customer = cells[1].textContent.trim();
+          const seller = cells[2].textContent.trim();
+          const item = cells[3].textContent.trim();
+          const quantity = cells[4].textContent.trim();
+          const price = cells[5].textContent.trim();
+          const totalPrice = cells[6].textContent.trim();
+          const status = cells[7].textContent.trim();
+          const paymentMethod = cells[8].textContent.trim();
+          const date = cells[9].textContent.trim();
+
+          document.getElementById("order-detail-content").innerHTML = `
+                        <ul>
+                            <li>Order ID: ${orderID}</li>
+                            <li>Customer Name: ${customer}</li>
+                            <li>Seller: ${seller}</li>
+                            <li>Payment Method: ${paymentMethod}</li>
+                            <li>Quantity: ${quantity}</li>
+                            <li>Price: ${price}</li>
+                            <li>Total Price: ${totalPrice}</li>
+                            <li>Product Ordered: ${item}</li>
+                            <li>Order Date: ${date}</li>
+                        </ul>
+                    `;
+
+          // Set the current status on the dropdown
+          document.getElementById("ordStatusDropdown").value = status;
+
+          ordModal.style.display = "flex";
+        };
+      });
+
+      // Cancel button click
+      document.getElementById("closeOrdDetail").onclick = () => {
+        ordModal.style.display = "none";
+        document.getElementById("order-detail-content").innerHTML = '';
+        currentOrderID = null;
+      }
+
+      // Close modal only when clicking the background
+      ordModal.addEventListener("click", function (event) {
+        if (event.target === this) {
+          ordModal.style.display = "none";
+          document.getElementById("order-detail-content").innerHTML = '';
+          currentOrderID = null;
+        }
+      });
+    }
+
+    // --- New Functionality: Status Update ---
+
+    function attachFormSubmitListener() {
+      orderStatusForm.addEventListener('submit', async function (e) {
+        e.preventDefault(); // Stop the form from submitting traditionally
+
+        const newStatus = document.getElementById("ordStatusDropdown").value;
+
+        if (!currentOrderID) {
+          alert("Error: No order selected for update.");
+          return;
+        }
+
+        // Construct the payload and endpoint
+        const payload = { status: newStatus };
+        // The API request will look like: PATCH /api/admins/orders/ORDER_ID/status
+        const finalEndpoint = `${UPDATE_ORDER_STATUS_ENDPOINT_BASE}/${currentOrderID}/status`;
+
+        try {
+          const response = await fetch(finalEndpoint, {
+            method: 'PATCH', // Assuming PATCH or PUT is used for updates
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error);
+          }
+
+          // Success handling
+          showToast(`Order ${currentOrderID} status updated to ${newStatus.toUpperCase()}!`);
+
+          // Close the modal, reset ID, and refresh the list
+          ordModal.style.display = "none";
+          document.getElementById("order-detail-content").innerHTML = '';
+          currentOrderID = null;
+          await loadOrders();
+
+        } catch (error) {
+          console.error('Status Update Error:', error);
+          showToast(`Error: ${error.message}`, 'error');
+        }
+      });
+
+      // Remove the placeholder function that was closing the modal instantly
+      document.getElementById("updateOrdDetail").onclick = null;
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders | Witstuff Cracftee Ideas| Witstuff Cracftee Ideas</title>
+    <link rel="shortcut icon" href="../../assets/wci.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/me.css">
+    <link rel="stylesheet" href="../styles/landing-page.css">
+    <link rel="stylesheet" href="../../styles/order-item-details.css">
+
+    <style>
+        /* --- General Table Styles (For orders-table) --- */
+        .orders-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            /* Ensures rounded corners cut off content */
+        }
+
+        .orders-table th,
+        .orders-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .orders-table th {
+            background-color: #f9fafb;
+            color: #4b5563;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .orders-table tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .orders-table .view-order-btn {
+            background-color: var(--warm-mocha);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+
+        .orders-table .view-order-btn:hover {
+            background-color: var(--warm-mocha-hover);
+        }
+
+        /* Status Colors */
+        .status-pending {
+            color: #f97316;
+            font-weight: 600;
+        }
+
+        .status-shipped {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        .status-delivered {
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        .status-cancelled {
+            color: #ef4444;
+            /* Tailwind red-500 */
+            font-weight: 600;
+        }
+
+        /* --- Modal Backdrop --- */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.6);
+            /* Darker overlay */
+        }
+
+        /* --- Modal Content Box --- */
+        .modal-content:not(.logout) {
+            background-color: #fefefe;
+            margin: 5% auto;
+            /* 5% from the top and centered */
+            padding: 20px 30px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 600px;
+            /* Max width for readability */
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* --- Close Button --- */
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 32px;
+            font-weight: bold;
+            line-height: 20px;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: #333;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* --- Modal Headings and Info --- */
+        .modal-content h2 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: #1f2937;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 0.5rem;
+        }
+
+        .modal-content h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #4b5563;
+        }
+
+        .modal-shop-info,
+        .modal-summary {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .modal-shop-info p,
+        .modal-summary p {
+            margin: 0.5rem 0;
+        }
+
+        /* --- Item List Styles (NEW) --- */
+        .modal-item {
+            border: 1px solid #eee;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background-color: #fafafa;
+        }
+
+        .modal-item-name {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .modal-item-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+
+        hr {
+            border: 0;
+            border-top: 1px solid #eee;
+            margin: 1.5rem 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="logo">
+        <div
+          class="image-container"
+          
+        >
+          <img
+            src="../../assets/Logo.jpg"
+          />
+        </div>
+        <h1 style="color: #a6785d">Witstuff Craftee Ideas</h1>
+      </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/shop">Shop</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="nav-icons">
+            <span><a href="/cart">🛒</a></span>
+            <button id="logout-button" style="border: none; cursor: pointer; background-color: transparent;">➜]</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Orders</h1>
+            <p>Discover our curated collection of handmade and unique items crafted by local sellers.</p>
+        </div>
+    </section>
+
+    <div class="container">
+
+        <section id="orders-section">
+            <div class="layout-container">
+
+                <div class="sidebar">
+                    <nav class="nav-list">
+                        <a href="/me" class="nav-item">
+                            <span class="nav-bullet"></span>
+                            <span>Dashboard</span>
+                        </a>
+
+                        <a href="#" class="nav-item nav-item-active">
+                            <span class="nav-bullet"></span>
+                            <span>Orders</span>
+                        </a>
+                        <a href="/billing-address" class="nav-item">
+                            <span class="nav-bullet"></span>
+                            <span>Address</span>
+                        </a>
+                    </nav>
+                </div>
+
+                <div class="main-content">
+                    <h1>Orders</h1>
+
+                    <div id="loading-orders" style="text-align: center; padding: 2rem; color: #007bff; display: block;">
+                        Loading orders...
+                    </div>
+                    <div id="error-orders" style="text-align: center; padding: 2rem; color: red; display: none;">
+                        Failed to load orders.
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="orders-table">
+                            <thead>
+                                <tr>
+                                    <th>Order #</th>
+                                    <th>Item</th>
+                                    <th>Status</th>
+                                    <th>Total</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orders-tbody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <!-- Modal Container -->
+        <div class="modal-container">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h1>Order Item Details</h1>
+                <button class="close-btn" id="closeBtn">&times;</button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <!-- Product Section -->
+                <div class="product-section">
+                    <div class="product-image">
+                        <img id="productImage" src="/placeholder.svg" alt="Product image" />
+                    </div>
+                    <div class="product-info">
+                        <h2 id="productName"></h2>
+                        <p id="productDescription"></p>
+                        <div id="statusBadge" class="status-badge"></div>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- Seller Section -->
+                <div class="seller-section">
+                    <h3>Seller Information</h3>
+                    <div class="seller-card">
+                        <div class="seller-shop-name" id="shopName"></div>
+                        <div class="seller-details">
+                            <div class="seller-detail">
+                                <strong>Contact:</strong>
+                                <span id="sellerEmail"></span>
+                            </div>
+                            <div class="seller-detail">
+                                <strong>Name:</strong>
+                                <span id="sellerName"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pricing Section -->
+                <div class="pricing-section">
+                    <div class="pricing-row">
+                        <label>Unit Price</label>
+                        <span class="amount" id="unitPrice"></span>
+                    </div>
+                    <div class="pricing-row">
+                        <label>Quantity</label>
+                        <span class="amount" id="quantity"></span>
+                    </div>
+                    <div class="pricing-row total">
+                        <label>Total</label>
+                        <span id="totalPrice"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button class="btn oid-btn-secondary" id="cancelBtn">Close</button>
+                <button class="btn oid-btn-primary" id="contactSellerBtn">Contact Seller</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-col">
+
+         <h1 style="color: #A6785D ">Witstuff Craftee Ideas</h1>
+
+        <p>We create fresh, beautifully arranged bouquets that bring joy and elegance to every moment. Every bloom is crafted with care, passion, and a touch of nature’s charm.</p>
+        <div class="socials">
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" /></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" /></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" /></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" /></a>
+        </div>
+      </div>
+
+        <div class="footer-col">
+          <h4>Information</h4>
+          <ul>
+            <li><a href="#">Our Company</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Our Services</a></li>
+            <li><a href="#">Why we</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quicklink</h4>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Cart</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Online Support</a></li>
+            <li><a href="#">Shipping Policy</a></li>
+            <li><a href="#">Return Policy</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>See Information</h4>
+          <p>
+            Bringing smiles, one bouquet at a time. Fresh, vibrant flowers
+            crafted with care for every occasion.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>Copyright © 2025. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- ✅ Logout Confirm Modal -->
+    <div class="modal" id="logoutModal">
+        <div class="modal-content delete-box logout">
+        <div class="circle"></div>
+        <p>Are you sure you want to log out?</p>
+
+        <div class="delete-actions">
+            <form action="/api/auth/logout" method="post">
+            <button class="btn-primary" id="confirmLogout">Yes</button>
+            </form>
+            <button class="secondary-btn" id="cancelLogout">No</button>
+        </div>
+        </div>
+    </div>
+
+    <script src="../../scripts/log-out-dialog.js"></script>
+    <script src="../../scripts/order-item-details.js"></script>
+    <script>
+        const orderItemModal = new OrderItemModal();
+
+        // === API Configuration ===
+        const API_ORDER_LIST_ENDPOINT = '/api/order-items';
+
+        // --- DOM Elements ---
+        const ordersTbody = document.getElementById('orders-tbody');
+        const loadingOrders = document.getElementById('loading-orders');
+        const errorOrders = document.getElementById('error-orders');
+
+        const closeBtn = document.querySelector('.close-btn');
+
+        // Function to format currency (PHP format)
+        const formatCurrency = (value) => `Php ${parseFloat(value).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
+
+        // --- RENDER FUNCTION ---
+
+        /**
+         * Renders the main orders table and stores detailed data in data-attributes on the row.
+         */
+        function renderOrdersTable(orders) {
+            ordersTbody.innerHTML = ''; // Clear existing rows
+            loadingOrders.style.display = 'none';
+
+            if (orders.length === 0) {
+                ordersTbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #6b7280; padding: 2rem;">No orders found.</td></tr>';
+                return;
+            }
+
+            orders.forEach(order => {
+                const row = ordersTbody.insertRow();
+                // Ensure order.status is available before calling toLowerCase
+                const statusValue = order.status || 'unknown';
+                const statusLower = statusValue.toLowerCase();
+                const statusClass = `status-${statusLower}`;
+                const statusText = statusLower.charAt(0).toUpperCase() + statusLower.slice(1);
+
+                // 1. Store the simple/display data in table cells (TDs)
+                row.innerHTML = `
+                    <td>#${order.order_item_id}</td>
+                    <td style="color: #6b7280;">${order.item_name || 'N/A'}</td>
+                    <td class="${statusClass}" data-status="${statusLower}">${statusText}</td>
+                    <td style="font-weight: 500;">${formatCurrency(order.total_price)}</td>
+                    <td>
+                        <button class="view-order-btn" data-order-item-id="${order.order_item_id}">View</button>
+                    </td>
+                `;
+
+                console.log(order);
+
+                // 2. Store the COMPLEX data in data-attributes on the row (TR)
+                row.setAttribute('data-shop-name', order.shop_name || 'N/A');
+                row.setAttribute('data-seller-name', order.seller_name || 'N/A');
+                row.setAttribute('data-total-price', order.total_price);
+                row.setAttribute('data-status-text', statusText);
+                row.setAttribute('data-item-name', order.item_name);
+                row.setAttribute('data-unit-price', order.unit_price);
+                row.setAttribute('data-image-url', order.image_url || '../../../assets/placeholder.png');
+                row.setAttribute('data-order-id', order.order_id);
+                row.setAttribute('data-quantity', order.quantity);
+                row.setAttribute('data-seller-email', order.seller_email);
+                row.setAttribute('data-seller-id', order.seller_id);
+                
+                // JSON.stringify is necessary because the 'items' is an array of objects.
+                row.setAttribute('data-items', JSON.stringify(order.items || []));
+            });
+
+            attachViewButtonListeners();
+        }
+
+        /**
+         * Populates the modal by reading data directly from the parent table row's data-attributes.
+         */
+        function populateModal(rowData) {
+            // Parse the JSON data stored in the data-items attribute
+            const items = JSON.parse(rowData.items) || [];
+            const statusLower = rowData.statusText.toLowerCase();
+
+            console.log(rowData.totalPrice, "ehlerk");
+
+            // Populate header details
+            document.getElementById('modal-order-id').textContent = rowData.id;
+            document.getElementById('modal-shop-name').textContent = rowData.shopName;
+            document.getElementById('modal-seller-name').textContent = rowData.sellerName;
+            document.getElementById('modal-total-price').textContent = formatCurrency(rowData.total);
+            document.getElementById('modal-unit-price').textContent = rowData.unitPrice;
+            document.getElementById('modal-item-name').textContent = rowData.itemName;
+
+            // Populate status with correct class and text
+            const statusElement = document.getElementById('modal-status');
+            statusElement.textContent = rowData.statusText;
+            statusElement.className = `status-${statusLower}`;
+
+            // NEW: Populate items list (no table)
+            if (items.length > 0) {
+                items.forEach(item => {
+                    // Create a div for each item
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'modal-item';
+
+                    // Populate the item details
+                    itemDiv.innerHTML = `
+                        <span class="modal-item-name">${item.item_name}</span>
+                        <div class="modal-item-details">
+                            <span>Qty: <strong>${item.quantity}</strong></span>
+                            <span>Unit Price: <strong>${formatCurrency(item.unit_price)}</strong></span>
+                            <span>Subtotal: <strong>${formatCurrency(item.total)}</strong></span>
+                        </div>
+                    `;
+                });
+            }
+
+            modalContentDetails.style.display = 'block';
+        }
+
+        // --- DATA FETCHING FUNCTIONS (Unchanged) ---
+
+        async function fetchOrdersList() {
+            loadingOrders.style.display = 'block';
+            errorOrders.style.display = 'none';
+            ordersTbody.innerHTML = '';
+
+            try {
+                const response = await fetch(API_ORDER_LIST_ENDPOINT);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                // Adjust the path to the orders array based on your API structure
+                const orders = data.data && data.data.order_items ? data.data.order_items : data;
+
+                renderOrdersTable(orders);
+
+            } catch (error) {
+                console.error('Error fetching order list:', error);
+                errorOrders.textContent = `Error loading orders: ${error.message}. Please check your network or API endpoint.`;
+                errorOrders.style.display = 'block';
+                ordersTbody.innerHTML = '';
+            } finally {
+                loadingOrders.style.display = 'none';
+            }
+        }
+
+
+        /**
+         * Finds the parent TR element and extracts the data from its attributes.
+         */
+        function handleViewOrder(buttonElement) {
+            // Find the closest parent table row (TR)
+            const rowElement = buttonElement.closest('tr');
+            if (rowElement) {
+                // Extract the data from the custom data attributes
+                const orderData = {
+                    order_item_id: buttonElement.getAttribute('data-order-item-id'),
+                    shop_name: rowElement.getAttribute('data-shop-name'),
+                    seller_name: rowElement.getAttribute('data-seller-name'),
+                    total_price: parseFloat(rowElement.getAttribute('data-total-price')),
+                    status: rowElement.querySelector('td:nth-child(3)').textContent, // Re-read status text for status class logic
+                    items: rowElement.getAttribute('data-items'), // This is the JSON string
+                    item_name: rowElement.getAttribute('data-item-name'),
+                    unit_price: rowElement.getAttribute('data-unit-price'),
+                    image_url: rowElement.getAttribute('data-image-url'),
+                    order_id: rowElement.getAttribute('data-order-id'),
+                    quantity: rowElement.getAttribute('data-quantity'),
+                    seller_email: rowElement.getAttribute('data-seller-email'),
+                    seller_id: rowElement.getAttribute('data-seller-id'),
+                };
+
+                orderItemModal.open(orderData);
+            } else {
+                console.error('Could not find parent table row.');
+            }
+        }
+
+        // --- Event Listener Attachment (Unchanged) ---
+        function attachViewButtonListeners() {
+            // Use event delegation or attach directly
+            document.querySelectorAll('.view-order-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    handleViewOrder(e.target);
+                });
+            });
+        }
+
+        // --- Initialization (Unchanged) ---
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchOrdersList();
+
+            // Modal close listeners
+            closeBtn.onclick = closeModal;
+            window.onclick = function (event) {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>

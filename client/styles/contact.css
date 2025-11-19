@@ -1,0 +1,237 @@
+/* CSS Reset and Variables */
+:root {
+    --color-primary: #212121;
+    /* Dark text and buttons */
+    --color-light-gray: #f9f9f9;
+    /* Card background/border */
+    --color-text-body: #666;
+    /* Subtitle text */
+    --color-white: #ffffff;
+    --font-main: 'Inter', sans-serif;
+    --max-width: 1100px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-white);
+    line-height: 1.6;
+    color: var(--color-primary);
+}
+
+#contact-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+/* --- 1. Info Cards Section Styling --- */
+#info-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-block: 60px;
+    justify-content: center;
+    max-width: 85%;
+    margin-inline: auto;
+}
+
+.info-card {
+    background-color: var(--color-light-gray);
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    flex: 1 1 300px;
+    /* Base for 3-column layout, allows wrapping */
+    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); */
+    /* Subtle shadow for lifted look */
+    border: 1px solid #ededed;
+}
+
+.icon-circle {
+    width: 60px;
+    height: 60px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-circle span{
+    font-size: 1.25rem;
+}
+
+.card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--color-primary);
+}
+
+.card-description {
+    font-size: 0.9rem;
+    color: var(--color-text-body);
+    line-height: 1.4;
+}
+
+/* --- 2. Form Section Styling --- */
+#contact-form-section {
+    background-color: var(--color-white);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    max-width: 85%;
+    margin: 0 auto;
+}
+
+#contact-form-section h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+#contact-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Default 2 columns for the first row */
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Span inputs across full width as needed */
+.form-group.full-width {
+    grid-column: 1 / -1;
+    /* Spans from the first to the last column line */
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--color-text-body);
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    color: var(--color-primary);
+    transition: border-color 0.3s;
+    width: 100%;
+    /* Ensures inputs fill their grid area */
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--color-primary);
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.submit-button {
+    grid-column: 1 / -1;
+    display: flex;
+    /* For centering the button if it were smaller */
+}
+
+button[type="submit"] {
+    background-color: var(--warm-mocha);
+    color: var(--color-white);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    max-width: 200px;
+    /* Based on the image size */
+}
+
+button[type="submit"]:hover {
+    background-color: var(--warm-mocha-hover);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Message Box for Confirmation (No alert()) */
+#message-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 1000;
+}
+
+#message-box.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* --- Responsiveness (Mobile First) --- */
+
+/* Tablets (less than 768px): Cards stack in 2 columns, form keeps 2 columns */
+@media (max-width: 900px) {
+    .info-card {
+        flex: 1 1 45%;
+        /* Two cards per row */
+    }
+}
+
+/* Mobile (less than 600px): Cards and form inputs stack in 1 column */
+@media (max-width: 600px) {
+    body {
+        padding: 20px 10px;
+    }
+
+    #contact-form-section {
+        padding: 20px;
+    }
+
+    /* Cards stack fully */
+    .info-card {
+        flex: 1 1 100%;
+    }
+
+    /* Form inputs stack fully on mobile */
+    #contact-form {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full-width,
+    .submit-button {
+        grid-column: 1 / 1;
+    }
+
+    /* Adjust button to be full width on mobile */
+    button[type="submit"] {
+        width: 100%;
+        max-width: none;
+    }
+}

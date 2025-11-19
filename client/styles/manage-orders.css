@@ -1,0 +1,16 @@
+@import url('base.css');
+@import url('main-layout.css');
+@import url('table-component.css');
+@import url('modal.css');
+
+.btn-primary {
+    padding: .5rem 1rem;
+}
+
+.secondary-btn {
+    padding: .5rem 1rem;
+}
+
+.delete-actions {
+    padding-top: 1rem;
+}

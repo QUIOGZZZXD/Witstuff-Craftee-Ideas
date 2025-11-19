@@ -1,0 +1,158 @@
+@import url('./base.css');
+
+.btn-primary {
+    width: 100%;
+    padding: 16px;
+}
+
+.login-container {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    min-height: 100vh;
+}
+
+.login-aside {
+    background-color: var(--warm-mocha);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.aside-content {
+    width: 100%;
+    max-width: 280px;
+    border-radius: 50%;
+    background-color: var(--warm-mocha);
+    height: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    background-color: var(--cream-white);
+}
+
+.login-form-wrapper {
+    width: 100%;
+    max-width: 420px;
+}
+
+.logo-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #F5F5F5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+
+.logo-circle img {
+    width: 100%;
+}
+
+.logo-img {
+    aspect-ratio: 1/1;
+    border-radius: 999px;
+}
+
+.login-form {
+    width: 100%;
+}
+
+.forgot-password {
+    display: inline-block;
+    font-size: 13px;
+    color: var(--warm-mocha);
+    text-decoration: none;
+    margin-bottom: 16px;
+    font-weight: 400;
+    transition: color 0.2s ease;
+}
+
+/* Password strength meter styles */
+#password-strength-meter {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+#strength-progress {
+    flex-grow: 1;
+    height: 8px;
+    border: none;
+    border-radius: 4px;
+}
+
+/* Color customization for the progress bar based on score */
+#strength-progress[value="25"]::-webkit-progress-value {
+    background-color: #ff4d4d;
+}
+
+/* Weak */
+#strength-progress[value="50"]::-webkit-progress-value {
+    background-color: #ffcc00;
+}
+
+/* Medium */
+#strength-progress[value="75"]::-webkit-progress-value {
+    background-color: #66cc66;
+}
+
+/* Strong */
+#strength-progress[value="100"]::-webkit-progress-value {
+    background-color: #008000;
+}
+
+/* Very Strong */
+
+#strength-text {
+    font-size: .8rem;
+    margin-left: 10px;
+    min-width: 80px;
+}
+
+.feedback-message {
+    font-size: 0.8rem;
+    padding-top: 0.3rem;
+    /* Prevents layout shift when text appears */
+    display: block;
+}
+
+#error-message {
+    color: red;
+}
+
+.success-message {
+    color: green;
+}
+
+
+@media (max-width: 1024px) {
+    .login-container {
+        grid-template-columns: 1fr;
+    }
+
+    .login-aside {
+        display: none;
+    }
+
+    .login-main {
+        padding: 40px 24px;
+    }
+}
+
+@media (max-width: 640px) {
+    .login-form-wrapper {
+        max-width: 100%;
+    }
+}

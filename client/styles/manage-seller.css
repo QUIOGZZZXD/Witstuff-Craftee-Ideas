@@ -1,0 +1,26 @@
+@import url('base.css');
+@import url('main-layout.css');
+@import url('table-component.css');
+@import url('modal.css');
+
+.status.active {
+  background: #d5ffd5;
+  color: #0b8f08;
+}
+
+.status.inactive {
+  color: rgb(236, 154, 0);
+  background: rgb(255, 230, 183);
+}
+
+.btn-primary {
+  padding: .5rem 1rem;
+}
+
+.secondary-btn {
+  padding: .5rem 1rem;
+}
+
+.delete-actions {
+  padding-top: 1rem;
+}

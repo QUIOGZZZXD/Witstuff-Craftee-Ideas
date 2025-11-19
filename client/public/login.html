@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Witstuff Craftee Ideas</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/wci.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../styles/auth.css">
+  <link rel="stylesheet" href="../styles/toast.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- public/login.html -->
+  <!-- <form action="/api/auth/login" method="POST">
+    <input type="text" name="username" placeholder="Username" required />
+    <select name="role" required>
+      <option value="user">User</option>
+      <option value="seller">Seller</option>
+      <option value="admin">Admin</option>
+    </select>
+    <button type="submit">Login</button>
+  </form> -->
+
+  <div>
+    <div class="login-container">
+      <aside class="login-aside">
+        <div class="aside-content">
+          <a href="/" style="display: flex; align-items: center; justify-content: center;">
+            <img 
+            class="logo-img"
+              src="../assets/Logo.jpg" 
+              alt="Witstuff Craftee Ideas Logo" 
+              style="display: block; width: 15rem; height: 15rem"
+            />
+          </a>
+        </div>
+      </aside>
+
+      <main class="login-main">
+        <div class="login-form-wrapper">
+          <div class="logo-circle">
+            <img class="logo-img" src="../assets/Logo.jpg" alt="Witstuff Craftee Ideas Logo">
+          </div>
+
+          <h1 class="form-title">Login</h1>
+          <p class="form-subtitle">Welcome back to Witstuff Craftee Ideas. Enter your credentials to access your account and
+            explore our curated floral collection.</p>
+
+          <form class="login-form" id="login_form">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <div class="input-wrapper">
+                <svg class="input-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 4L8 8L14 4M2 4V12H14V4H2Z" stroke="#A6785D" stroke-width="1" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <div class="input-wrapper">
+                <svg class="input-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M12 7V5C12 2.79086 10.2091 1 8 1C5.79086 1 4 2.79086 4 5V7M3 7H13C13.5523 7 14 7.44772 14 8V14C14 14.5523 13.5523 15 13 15H3C2.44772 15 2 14.5523 2 14V8C2 7.44772 2.44772 7 3 7Z"
+                    stroke="#A6785D" stroke-width="1" stroke-linecap="round" />
+                </svg>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-primary">Login</button>
+            <p class="forgot-password" style="width: 100%; display: flex; justify-content: center; padding: 1rem;">
+              Don't have an account?&nbsp;<a href="/register">Create an Account</a>
+            </p>
+          </form>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../scripts/toast.js"></script>
+  <script src="../scripts/login-submission.js" defer></script>
+
+  <div id="toast-container"></div>
+</body>
+
+</html>

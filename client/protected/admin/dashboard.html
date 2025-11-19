@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Witstuff Craftee Ideas</title>
+    <link rel="icon" type="image/svg+xml" href="../../assets/wci.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="/styles/dashboard.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+</head <body>
+<div id="layout-grid">
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="../../assets/Logo.jpg" style="width: 5rem; height: 5rem;border-radius: 999px;" />
+        </div>
+        <div class="sidebar-navigation">
+        <div class="navigation-item">
+            <div class="nav-logo">
+                <!-- Dashboard -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="white" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                    <path d="M3 13h8V3H3zM13 21h8v-8h-8zM13 3h8v6h-8zM3 21h8v-4H3z" />
+                </svg>
+            </div>
+            <a href="/admin/dashboard">Dashboard</a>
+            </div>
+
+            <div class="navigation-item">
+                <div class="nav-logo">
+                    <!-- Manage Sellers -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="white" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                </div>
+                <a href="/admin/manage-sellers">Manage Sellers</a>
+            </div>
+
+            <div class="navigation-item">
+                <div class="nav-logo">
+                    <!-- Manage Products -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="white" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73L13 2.27a2 2 0 0 0-2 0L4 6.27A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.73z" />
+                        <path d="M3.27 6.96 12 12.01l8.73-5.05" />
+                        <path d="M12 22.08V12" />
+                    </svg>
+                </div>
+                <a href="/admin/manage-products">Manage Products</a>
+            </div>
+
+            <div class="navigation-item">
+                <div class="nav-logo">
+                    <!-- Manage Orders -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="white" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M21 15V8a2 2 0 0 0-2-2h-5l-2-3H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z" />
+                        <path d="M9 18h6" />
+                    </svg>
+                </div>
+                <a href="/admin/manage-orders">Manage Orders</a>
+            </div>
+        </div>
+
+    </aside>
+    <div class="header">
+        <div class="header-headline">
+            <h1 class="header-title">
+                Dashboard Overview
+            </h1>
+            <p class="header-description">
+                A quick summary of store performance and metrics
+            </p>
+        </div>
+        <button id="logout-button" class="btn-primary">
+            Log out
+        </button>
+    </div>
+    <main class="main-section">
+        <div class="dashboard-content">
+            <div class="metric-content">
+                <div class="metric-card">
+                    <div class="metric-logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-percent-icon lucide-percent">
+                            <line fill="currentColor" x1="19" x2="5" y1="5" y2="19" />
+                            <circle cx="6.5" cy="6.5" r="2.5" />
+                            <circle cx="17.5" cy="17.5" r="2.5" />
+                        </svg>
+                    </div>
+                    <div class="metric-status">
+                        <h1 class="metric-value sales"></h1>
+                        <h3 class="metric-label">Total Sales</h3>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-logo"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-percent-icon lucide-percent">
+                            <line fill="currentColor" x1="19" x2="5" y1="5" y2="19" />
+                            <circle cx="6.5" cy="6.5" r="2.5" />
+                            <circle cx="17.5" cy="17.5" r="2.5" />
+                        </svg></div>
+                    <div class="metric-status">
+                        <h1 class="metric-value orders"></h1>
+                        <h3 class="metric-label">Total Orders</h3>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-logo"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-percent-icon lucide-percent">
+                            <line fill="currentColor" x1="19" x2="5" y1="5" y2="19" />
+                            <circle cx="6.5" cy="6.5" r="2.5" />
+                            <circle cx="17.5" cy="17.5" r="2.5" />
+                        </svg></div>
+                    <div class="metric-status">
+                        <h1 class="metric-value products"></h1>
+                        <h3 class="metric-label">Total Products</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-stats">
+                <div class="bar-chart">
+                    <canvas id="myBarChart" width="400" height="200"></canvas>
+                </div>
+                <div class="orders-card">
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- ✅ Logout Confirm Modal -->
+<div class="modal" id="logoutModal">
+    <div class="modal-content delete-box">
+        <div class="circle"></div>
+        <p>Are you sure you want to log out?</p>
+
+        <div class="delete-actions">
+            <form action="/api/auth/logout" method="post">
+                <button class="btn-primary" id="confirmLogout">Yes</button>
+            </form>
+            <button class="secondary-btn" id="cancelLogout">No</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@^4.0.0/dist/chart.umd.min.js"></script>
+<script src="../../scripts/date.js"></script>
+<script src="../../scripts/admin/dashboard.js"></script>
+<script src="/scripts/log-out-dialog.js"></script>
+</body>
+
+</html>

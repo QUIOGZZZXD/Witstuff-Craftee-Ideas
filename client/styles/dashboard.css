@@ -1,0 +1,178 @@
+@import url('base.css');
+@import url('main-layout.css');
+@import url('modal.css');
+
+.btn-primary {
+    padding: .5rem 1rem;
+}
+
+.secondary-btn {
+    padding: .5rem 1rem;
+}
+
+.delete-actions {
+    padding-top: 1rem;
+}
+
+.dashboard-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    height: fit-content;
+    padding-bottom: 2rem;
+}
+
+.metric-content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    gap: 2rem;
+}
+
+.metric-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    height: 8rem;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: var(--sage-green);
+    color: var(--text-primary);
+}
+
+.metric-logo {
+    color: var(--text-primary);
+}
+
+.metric-value {
+    font-size: 32px;
+    font-weight: 400;
+}
+
+.metric-label {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.bar-chart {
+    padding: 1rem;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.dashboard-stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+}
+
+.orders-card {
+    background: #fff;
+    width: 45%;
+    margin: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.card-title {
+    margin: 0;
+    padding: 12px;
+    background: #eee;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.order-item:last-child {
+    border-bottom: none;
+}
+
+.order-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.date {
+    font-size: 13px;
+    color: #555;
+}
+
+.customer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.img-placeholder {
+    width: 35px;
+    height: 35px;
+    background: #ccc;
+    border-radius: 4px;
+}
+
+.order-id {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.customer-name {
+    font-size: 13px;
+    color: #444;
+}
+
+.order-meta {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.total {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.status {
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+/* Status Colors */
+.delivered {
+    background: #d1f7d1;
+    color: #157f1f;
+}
+
+.pending {
+    background: #ffe9b3;
+    color: #c87c00;
+}
+
+@media (max-width: 640px) {
+    .dashboard-stats {
+        flex-direction: column;
+    }
+
+    .orders-card {
+        width: 100%;
+    }
+}

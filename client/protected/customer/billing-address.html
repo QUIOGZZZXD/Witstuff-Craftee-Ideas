@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Address | Witstuff Cracftee Ideas</title>
+    <link rel="shortcut icon" href="../../assets/wci.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles/me.css">
+    <link rel="stylesheet" href="../styles/landing-page.css">
+    <link rel="stylesheet" href="../styles/toast.css">
+    <link rel="stylesheet" href="../styles/address.css">
+
+    <style>
+        /* Target the form container to control layout */
+        .main-content form#billing-address-form {
+            display: grid;
+            gap: 1.5rem;
+            /* Space between form fields */
+            max-width: 500px;
+            /* Keep the form readable */
+            margin-top: 2rem;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            /* Light border around the form */
+            border-radius: 8px;
+            background-color: #fcfcfc;
+        }
+
+        /* Style the labels to be slightly bolder and block-level */
+        .main-content form#billing-address-form label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.25rem;
+            font-size: 0.95rem;
+        }
+
+        /* Style for all input fields */
+        .main-content form#billing-address-form input[type="text"] {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #ccc;
+            /* Light grey border */
+            border-radius: 6px;
+            /* Slightly rounded corners */
+            font-size: 1rem;
+            color: #555;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            box-sizing: border-box;
+            /* Ensures padding doesn't affect total width */
+        }
+
+        /* Focus state: what happens when the user clicks/tabs into the input */
+        .main-content form#billing-address-form input:focus {
+            border-color: #007bff;
+            /* A nice primary blue color */
+            outline: none;
+            /* Remove default browser outline */
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+            /* Subtle glowing effect */
+        }
+    </style>
+</head>
+
+<body><!-- NAVIGATION -->
+    <header class="navbar">
+        <div class="logo">
+        <div
+          class="image-container"
+          
+        >
+          <img
+            src="../../assets/Logo.jpg"
+          />
+        </div>
+        <h1 style="color: #a6785d">Witstuff Craftee Ideas</h1>
+      </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a class="active" href="/">Home</a></li>
+                <li><a href="/shop">Shop</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="nav-icons">
+            <span><a href="/cart">🛒</a></span>
+            <button id="logout-button" style="border: none; cursor: pointer; background-color: transparent;">➜]</button>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Billing Address</h1>
+            <p>Discover our curated collection of handmade and unique items crafted by local sellers.</p>
+        </div>
+    </section>
+    <div class="container">
+
+        <section id="dashboard-section">
+
+            <div class="layout-container">
+                <div class="sidebar">
+                    <nav class="nav-list">
+                        <a href="/me" class="nav-item">
+                            <span class="nav-bullet"></span>
+                            <span>Dashboard</span>
+                        </a>
+                        <a href="/orders" class="nav-item">
+                            <span class="nav-bullet"></span>
+                            <span>Orders</span>
+                        </a>
+                        <a href="#" class="nav-item nav-item-active">
+                            <span class="nav-bullet"></span>
+                            <span>Address</span>
+                        </a>
+                    </nav>
+                </div>
+
+                <div class="main-content">
+                    <h1>Billing Address</h1>
+                    <p>
+                        Manage your default billing and shipping address here. This address will be used automatically
+                        to process new orders. Please ensure your details are accurate to avoid any delays in shipping.
+                    </p>
+
+                    <p id="loading-message">Loading address data...</p>
+
+                    <form id="billing-address-form" style="display: none;"> <label for="street">Street</label>
+                        <input type="text" id="street" name="street">
+                        <label for="city">City</label>
+                        <input type="text" name="city" id="city">
+                        <label for="province">Province</label>
+                        <input type="text" name="province" id="province">
+                        <label for="postal_code">Postal Code</label>
+                        <input type="text" name="postal_code" id="post_code">
+                        <button type="submit" class="btn-primary">Save Address</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-col">
+
+         <h1 style="color: #A6785D ">Witstuff Craftee Ideas</h1>
+
+        <p>We create fresh, beautifully arranged bouquets that bring joy and elegance to every moment. Every bloom is crafted with care, passion, and a touch of nature’s charm.</p>
+        <div class="socials">
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" /></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" /></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" /></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" /></a>
+        </div>
+      </div>
+
+        <div class="footer-col">
+          <h4>Information</h4>
+          <ul>
+            <li><a href="#">Our Company</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Our Services</a></li>
+            <li><a href="#">Why we</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quicklink</h4>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Cart</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Online Support</a></li>
+            <li><a href="#">Shipping Policy</a></li>
+            <li><a href="#">Return Policy</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>See Information</h4>
+          <p>
+            Bringing smiles, one bouquet at a time. Fresh, vibrant flowers
+            crafted with care for every occasion.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>Copyright © 2025. All rights reserved.</p>
+      </div>
+    </footer>
+    <!-- ✅ Logout Confirm Modal -->
+    <div class="modal" id="logoutModal">
+        <div class="modal-content delete-box logout">
+        <div class="circle"></div>
+        <p>Are you sure you want to log out?</p>
+
+        <div class="delete-actions">
+            <form action="/api/auth/logout" method="post">
+            <button class="btn-primary" id="confirmLogout">Yes</button>
+            </form>
+            <button class="secondary-btn" id="cancelLogout">No</button>
+        </div>
+        </div>
+    </div>
+
+    <script src="../../scripts/log-out-dialog.js"></script>
+
+    <div id="toast-container"></div>
+    <script src="/scripts/toast.js"></script>
+
+    <script>
+        // --- API Configuration ---
+        // NOTE: BILLING_ADDRESS_ENDPOINT will be used for POST/PUT.
+        const BILLING_ADDRESS_ENDPOINT = '/api/billing-address';
+        // NOTE: FETCH_ADDRESS_ENDPOINT is used for GET.
+        const FETCH_ADDRESS_ENDPOINT = '/api/billing-address/self';
+
+        // --- DOM Elements ---
+        const billingAddressForm = document.getElementById('billing-address-form');
+        const loadingMessage = document.getElementById('loading-message');
+
+        /**
+         * Populates the form fields with data fetched from the server.
+         * @param {object} data - The address data object.
+         */
+        function populateAddressForm(data) {
+            // Map the data keys to the form input IDs/names
+            if (data.street) document.getElementById('street').value = data.street;
+            if (data.city) document.getElementById('city').value = data.city;
+            if (data.province) document.getElementById('province').value = data.province;
+
+            // Use the ID 'post_code' to find the postal code element
+            if (data.postal_code) {
+                document.getElementById('post_code').value = data.postal_code;
+            }
+        }
+
+        /**
+         * Fetches existing billing address data upon page load.
+         */
+        async function fetchAddressData() {
+            loadingMessage.textContent = 'Loading address data...';
+            loadingMessage.style.display = 'block';
+            billingAddressForm.style.display = 'none';
+
+            try {
+                const response = await fetch(FETCH_ADDRESS_ENDPOINT, {
+                    method: 'GET',
+                    headers: { 'Content-Type': 'application/json' },
+                });
+
+                if (!response.ok) {
+                    // Treat 404 or 204 (No Content) as "address not set yet"
+                    if (response.status === 404 || response.status === 204) {
+                        loadingMessage.textContent = 'Enter your billing address.';
+                        return;
+                    }
+                    const errorData = await response.json().catch(() => ({ message: 'Failed to retrieve address' }));
+                    throw new Error(errorData.message || `Status: ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                // Assuming the address data is nested under 'data.billing_address' based on your previous code adjustment
+                const address = data.data && data.data.billing_address ? data.data.billing_address : data;
+
+                if (address && Object.keys(address).length > 0) {
+                    populateAddressForm(address);
+                    loadingMessage.textContent = 'Existing billing address loaded.';
+                } else {
+                    loadingMessage.textContent = 'Enter your billing address.';
+                }
+
+            } catch (error) {
+                console.error('Error fetching billing address:', error);
+                loadingMessage.textContent = 'Failed to load address. Please try again.';
+                showToast(`Error loading address: ${error.message}`, 'error');
+            } finally {
+                // Hide loading message and show the form
+                billingAddressForm.style.display = 'grid';
+                loadingMessage.style.display = 'none';
+            }
+        }
+
+
+        // --- Form Submission Handler ---
+        billingAddressForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const addressData = Object.fromEntries(formData.entries());
+
+            // The input name is 'postal_code', which matches the form data.
+            // The previous 'post_code' correction is not strictly necessary but harmless.
+
+            console.log('Sending address data:', addressData);
+
+            const submitButton = this.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Saving...';
+
+            try {
+                // We typically use POST for creation and PUT/PATCH for updates. 
+                // Since the fetch function runs first, we'll assume POST works for both for now.
+                const response = await fetch(BILLING_ADDRESS_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(addressData),
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({ message: 'Unknown server error' }));
+                    throw new Error(errorData.message || `Failed to save address. Status: ${response.status}`);
+                }
+
+                // Re-fetch to ensure the form has the latest saved data (and clears the "Enter your address" message)
+                await fetchAddressData();
+
+                showToast('✅ Billing address saved successfully!', 'success');
+
+            } catch (error) {
+                console.error('Error saving billing address:', error);
+                showToast(`Operation failed: ${error.message}`, 'error');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Save Address';
+            }
+        });
+
+
+        // --- Initial Data Load on Page Load ---
+        document.addEventListener('DOMContentLoaded', fetchAddressData);
+
+    </script>
+</body>
+
+</html>

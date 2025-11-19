@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Products | Witstuff Craftee Ideas</title>
+  <link rel="icon" type="image/svg+xml" href="../../assets/wci.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/styles/manage-products.css">
+  <link rel="stylesheet" href="/styles/toast.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div id="layout-grid">
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="../../assets/Logo.jpg" style="width: 5rem; height: 5rem;border-radius: 999px;" />
+      </div>
+      <div class="sidebar-navigation">
+        <div class="navigation-item">
+          <div class="nav-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="white" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M3 13h8V3H3zM13 21h8v-8h-8zM13 3h8v6h-8zM3 21h8v-4H3z" />
+            </svg>
+          </div>
+          <a href="/seller/dashboard">Dashboard</a>
+        </div>
+        <div class="navigation-item">
+
+          <div class="nav-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="white" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path
+                d="M21 16V8a2 2 0 0 0-1-1.73L13 2.27a2 2 0 0 0-2 0L4 6.27A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.73z" />
+              <path d="M3.27 6.96 12 12.01l8.73-5.05" />
+              <path d="M12 22.08V12" />
+            </svg>
+          </div>
+          <a href="/seller/manage-products">
+            Manage Products
+          </a>
+        </div>
+        <div class="navigation-item">
+
+          <div class="nav-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="white" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M21 15V8a2 2 0 0 0-2-2h-5l-2-3H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z" />
+              <path d="M9 18h6" />
+            </svg>
+          </div>
+          <a href="/seller/manage-orders">
+            Manage Orders
+          </a>
+        </div>
+      </div>
+    </aside>
+    <div class="header">
+      <div class="header-headline">
+        <h1 class="header-title">
+          Manage Products
+        </h1>
+        <p class="header-description">
+          Monitor product inventories
+        </p>
+      </div>
+      <button id="logout-button" class="btn-primary">
+        Log out
+      </button>
+    </div>
+    <main class="main-section">
+      <div class="container">
+        <div class="top-bar">
+          <h2>Product List</h2>
+
+          <div class="left-top-bar">
+            <div class="search-box">
+              <input type="text" placeholder="Search here" id="product-search-input" />
+              <button class="search-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="lucide lucide-search-icon lucide-search">
+                  <path d="m21 21-4.34-4.34" />
+                  <circle cx="11" cy="11" r="8" />
+                </svg></button>
+            </div>
+            <button class="add-btn" id="openAddModal">Add product</button>
+          </div>
+        </div>
+
+        <table class="seller-table">
+          <thead>
+            <tr>
+              <th>Product ID</th>
+              <th>Product Name</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody id="product-table-body">
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+
+  <div class="modal" id="addProductModal">
+    <form id="addProductForm" enctype="multipart/form-data">
+      <div class="modal-content">
+        <h3>Add Product Form</h3>
+
+        <label>Product Name</label>
+        <input type="text" class="input" name="name"> <label>Description</label>
+        <input type="text" class="input" name="description"> <label>Category</label>
+        <input type="text" class="input" name="category"> <label>Price</label>
+        <input type="number" class="input" name="price"> <label>Stock Quantity</label>
+        <input type="number" class="input" name="stock"> <label>Product Images</label>
+        <input type="file" name="image" multiple> <button class="btn-primary" style="width: 100%;" type="submit">Add
+          product</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="modal" id="editProductModal">
+    <form id="editProductForm" enctype="multipart/form-data">
+      <div class="modal-content">
+        <h3>Edit Product Form</h3>
+
+        <input type="hidden" id="product-id" name="product_id"> <label>Product Name</label>
+        <input type="text" class="input" id="product-name" name="name">
+
+        <label>Description</label>
+        <input type="text" class="input" id="description" name="description">
+
+        <label>Category</label>
+        <input type="text" class="input" id="category" name="category">
+
+        <label>Price</label>
+        <input type="number" class="input" id="price" name="price">
+
+        <label>Stock Quantity</label>
+        <input type="number" class="input" id="stock" name="stock">
+
+        <label>Product Images</label>
+        <input type="file" name="image" multiple>
+
+        <button class="btn-primary" style="width: 100%;" type="submit">Save product</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="modal" id="deleteModal">
+    <div class="modal-content delete-box">
+      <div class="circle"></div>
+      <p>Are you sure you want to delete this?</p>
+
+      <div class="delete-actions">
+        <form id="deleteProductForm"> <input type="hidden" id="delete-product-id" name="product_id"> <button
+            class="btn-primary" id="confirmDelete" type="submit">Delete</button>
+        </form>
+        <button class="secondary-btn" id="cancelDelete">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="logoutModal">
+    <div class="modal-content delete-box">
+      <div class="circle"></div>
+      <p>Are you sure you want to log out?</p>
+
+      <div class="delete-actions">
+        <form action="/api/auth/logout" method="post" id="logoutForm"> <button class="btn-primary" id="confirmLogout"
+            type="submit">Yes</button>
+        </form>
+        <button class="secondary-btn" id="cancelLogout">No</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+  <script src="/scripts/toast.js"></script>
+  <script>
+    // --- Global Elements ---
+    const addProductModal = document.getElementById('addProductModal');
+    const editProductModal = document.getElementById('editProductModal');
+    const deleteModal = document.getElementById('deleteModal');
+    const logoutModal = document.getElementById('logoutModal');
+    const openAddModalBtn = document.getElementById('openAddModal');
+    const logoutButton = document.getElementById('logout-button');
+    const productTableBody = document.getElementById('product-table-body');
+
+    // NEW: Search Element
+    const searchInput = document.getElementById('product-search-input');
+    // NEW: Global state to hold all products
+    let allProducts = [];
+
+
+    // --- Form Elements ---
+    const addProductForm = document.getElementById('addProductForm');
+    const editProductForm = document.getElementById('editProductForm');
+    const deleteProductForm = document.getElementById('deleteProductForm');
+
+    // --- API Configuration ---
+    const FETCH_ENDPOINT = '/api/sellers/items';
+    const ADD_ENDPOINT = '/api/sellers/items';
+    const EDIT_ENDPOINT_BASE = '/api/items';
+    const DELETE_ENDPOINT_BASE = '/api/items';
+    const MODERATE_ENDPOINT_BASE = '/api/admins/items';
+    const LOGOUT_ENDPOINT = '/api/auth/logout';
+
+    // --- Utility Functions ---
+
+    function closeModals() {
+      addProductModal.style.display = 'none';
+      editProductModal.style.display = 'none';
+      deleteModal.style.display = 'none';
+      logoutModal.style.display = 'none';
+    }
+
+    function resetEditModalFields() {
+      document.getElementById("product-name").value = "";
+      document.getElementById("description").value = "";
+      document.getElementById("category").value = "";
+      document.getElementById("price").value = "";
+      document.getElementById("stock").value = "";
+      document.getElementById("product-id").value = "";
+    }
+
+    // --- Modal Toggles ---
+
+    openAddModalBtn.addEventListener('click', () => {
+      closeModals();
+      addProductModal.style.display = 'flex';
+    });
+
+    logoutButton.addEventListener('click', () => {
+      closeModals();
+      logoutModal.style.display = 'flex';
+    });
+
+    window.onclick = function (event) {
+      if (event.target.classList.contains('modal')) {
+        closeModals();
+        resetEditModalFields();
+      }
+    }
+
+    document.getElementById('cancelDelete')?.addEventListener('click', closeModals);
+    document.getElementById('cancelLogout')?.addEventListener('click', closeModals);
+
+    // --- Table Data Rendering ---
+
+    function createProductRow(product) {
+      const uniqueId = product.item_id;
+      const statusLower = (product.status || 'draft').toLowerCase();
+      let statusClass = 'rejected';
+
+      if (statusLower === 'active' || statusLower === 'approved') {
+        statusClass = 'approved';
+      } else if (statusLower === 'pending') {
+        statusClass = 'pending';
+      }
+
+      return `
+                <tr data-id="${uniqueId}" data-description="${product.description || ''}" data-stock="${product.stock || ''}">
+                    <td>${product.item_id || 'N/A'}</td>
+                    <td>${product.name || 'N/A'}</td>
+                    <td>${product.category || 'N/A'}</td>
+                    <td>${product.price || 'N/A'}</td>
+                    <td>${product.stock || 'N/A'}</td>
+                    <td><span class="status ${statusClass}">${statusLower}</span></td>
+                    <td>
+                        <button class="edit-btn openEditModal">Edit</button>
+                        <button class="remove-btn openDeleteModal">Remove</button>
+                    </td>
+                </tr>
+            `;
+    }
+
+    /**
+     * Renders the product table based on an array of product objects.
+     * Attaches listeners after rendering.
+     * @param {Array<Object>} productsToRender - The array of products to display.
+     */
+    function renderProducts(productsToRender) {
+      if (!Array.isArray(productsToRender) || productsToRender.length === 0) {
+        productTableBody.innerHTML = '<tr><td colspan="7">No products found.</td></tr>';
+        return;
+      }
+
+      productTableBody.innerHTML = productsToRender.map(createProductRow).join('');
+      attachTableListeners();
+    }
+
+    async function fetchAndRenderProducts() {
+      productTableBody.innerHTML = '<tr><td colspan="7">Loading products...</td></tr>';
+      allProducts = []; // Clear previous data
+
+      try {
+        const response = await fetch(FETCH_ENDPOINT, {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' }
+        });
+
+        if (!response.ok) {
+          throw new Error(`Failed to fetch data. Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        // Adjust this line to correctly access your product array
+        const products = data.data.items;
+
+        // Store the full list
+        allProducts = products;
+
+        // Render the full list initially
+        renderProducts(allProducts);
+
+      } catch (error) {
+        console.error('Error fetching products:', error);
+        productTableBody.innerHTML = `<tr><td colspan="7" style="color: red;">Error: ${error.message}</td></tr>`;
+      }
+    }
+
+    /**
+     * Handles the client-side filtering based on the search input.
+     */
+    function handleSearch() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+
+      if (searchTerm === '') {
+        // If search box is empty, render all products
+        renderProducts(allProducts);
+        return;
+      }
+
+      // Filter the full list of products by name (cells[1])
+      const filteredProducts = allProducts.filter(product => {
+        const productName = product.name ? product.name.toLowerCase() : '';
+        return productName.includes(searchTerm);
+      });
+
+      renderProducts(filteredProducts);
+    }
+
+    // --- Attach Search Listener ---
+    searchInput.addEventListener('input', handleSearch);
+
+
+    // --- Attaching Event Listeners to New/Existing Table Rows ---
+
+    function attachTableListeners() {
+      // 1. Open 'Edit Product' Modal
+      document.querySelectorAll('.openEditModal').forEach(button => {
+        button.onclick = (e) => {
+          closeModals();
+
+          const row = e.target.closest('tr');
+          const cells = row.querySelectorAll("td");
+          const uniqueId = row.dataset.id;
+
+          // Populate fields
+          document.getElementById('product-id').value = uniqueId;
+          document.getElementById('product-name').value = cells[1].textContent.trim();
+          document.getElementById('category').value = cells[2].textContent.trim();
+          document.getElementById('price').value = cells[3].textContent.trim();
+          document.getElementById('description').value = row.dataset.description;
+          document.getElementById('stock').value = cells[4].textContent.trim();
+
+          editProductModal.style.display = 'flex';
+        };
+      });
+
+      // 2. Open 'Delete Product' Modal
+      document.querySelectorAll('.openDeleteModal').forEach(button => {
+        button.onclick = (e) => {
+          closeModals();
+
+          const row = e.target.closest('tr');
+          const uniqueId = row.dataset.id;
+          document.getElementById('delete-product-id').value = uniqueId;
+          deleteModal.style.display = 'flex';
+        };
+      });
+    }
+
+
+    // --- API Requests (Form Submissions) ---
+
+    // New utility function to check if a file was selected in a FormData object
+    function hasFiles(formData) {
+      for (const [key, value] of formData.entries()) {
+        if (value instanceof File && value.size > 0) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    async function submitForm(endpointBase, formData, formElement, method = 'POST', recordId = '') {
+      try {
+        const finalEndpoint = recordId ? `${endpointBase}/${recordId}` : endpointBase;
+
+        let body;
+        const headers = {};
+        const isFileUpload = hasFiles(formData);
+        const isDataSubmission = method !== 'DELETE' && method !== 'GET';
+
+        if (isDataSubmission) {
+          if (isFileUpload) {
+            // Send as multipart/form-data for file uploads
+            body = formData;
+          } else {
+            // Send as application/json for non-file data (cleaner for PUT/PATCH/POST)
+            const data = Object.fromEntries(formData);
+            // Remove file fields from JSON body if they are empty
+            for (const key in data) {
+              if (data[key] === '[object FileList]' || (data[key] instanceof File && data[key].size === 0)) {
+                delete data[key];
+              }
+            }
+            body = JSON.stringify(data);
+            headers['Content-Type'] = 'application/json';
+          }
+        } else {
+          body = null;
+        }
+
+        console.log(body);
+
+        const response = await fetch(finalEndpoint, {
+          method: method,
+          headers: headers,
+          body: body,
+        });
+
+        // 1. Handle non-OK status codes (4xx, 5xx)
+        if (!response.ok) {
+          // Try to read error as JSON
+          try {
+            const errorData = await response.json();
+            throw new Error(errorData.error);
+          } catch (jsonError) {
+            throw new Error(jsonError);
+          }
+        }
+
+        // 2. Handle successful response (2xx)
+        // Check if the body is empty (e.g., 204 No Content for DELETE)
+        if (response.status === 204 || response.headers.get('content-length') === '0') {
+          console.log('Success: No content returned.');
+        } else {
+          console.log('Success:', await response.json());
+        }
+
+        showToast('Operation successful!'); // Assuming showToast is available
+        closeModals();
+        formElement.reset();
+        resetEditModalFields();
+
+        fetchAndRenderProducts(); // Re-fetch to update data and table
+
+      } catch (error) {
+        console.error('Submission Error:', error);
+        showToast(`${error.message}`, 'error');
+      }
+    }
+    // 1. Add Product Form Submission (POST)
+    addProductForm?.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      submitForm(ADD_ENDPOINT, formData, this, 'POST');
+    });
+
+    // 2. Edit Product Form Submission (PUT/PATCH)
+    editProductForm?.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const productId = formData.get('product_id');
+      submitForm(EDIT_ENDPOINT_BASE, formData, this, 'PUT', productId);
+    });
+
+    // 3. Delete Product Form Submission (DELETE)
+    deleteProductForm?.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const productId = formData.get('product_id');
+      submitForm(DELETE_ENDPOINT_BASE, formData, this, 'DELETE', productId);
+    });
+
+    // --- Initial Data Load on Page Load ---
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Clear static HTML content from the dynamic body and fetch data
+      productTableBody.innerHTML = '';
+      fetchAndRenderProducts();
+    });
+
+  </script>
+</body>
+
+</html>

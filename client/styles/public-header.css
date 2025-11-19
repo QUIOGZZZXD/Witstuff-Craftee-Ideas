@@ -1,0 +1,22 @@
+/* NAV */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    font-size: 14px;
+}
+
+.nav-icons span {
+    margin-left: 15px;
+    cursor: pointer;
+}

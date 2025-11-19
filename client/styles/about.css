@@ -1,0 +1,261 @@
+:root {
+    --primary-text-color: #000;
+    --secondary-text-color: #555;
+    --placeholder-bg: #9199A3;
+    /* Medium/dark gray from the image */
+    --background-color: #fff;
+    --spacing-unit: 1.5rem;
+    --radius-large: 1rem;
+}
+
+/* Base styles */
+body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--primary-text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 var(--spacing-unit);
+}
+
+section {
+    padding: 5rem;
+    width: 100%;
+}
+
+/* --- Global Typography & Components --- */
+
+.title-uppercase {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+    color: var(--primary-text-color);
+}
+
+.button {
+    display: inline-block;
+    background-color: var(--warm-mocha);
+    color: var(--background-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.button:hover {
+    background-color: var(--warm-mocha-hover);
+}
+
+.image-box {
+    background-color: var(--placeholder-bg);
+    border-radius: var(--radius-large);
+    aspect-ratio: 1 / 1;
+    /* Square box for images */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    /* Placeholder Icon (A simple mountain/gallery SVG for visual match) */
+    /* Using a simple inline SVG to match the placeholder icon shape */
+}
+
+.image-box img {
+    aspect-ratio: 1/1;
+    object-fit: contain;
+}
+
+.placeholder-icon {
+    width: 30%;
+    height: 30%;
+    fill: #EFEFEF;
+    /* Light gray icon */
+}
+
+/* --- History Section (Image 2) --- */
+
+.history-section {
+    text-align: center;
+    padding-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+.history-header {
+    padding-inline: 10rem;
+    text-align: center;
+    background-color: #f4f5f7;
+    width: 100%;
+    padding-block: 3rem;
+}
+
+.history-text {
+    color: var(--secondary-text-color);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.team-header {
+    margin-bottom: 3rem;
+}
+
+.team-header .subtitle {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+    color: var(--secondary-text-color);
+}
+
+.team-header .team-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-unit);
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.team-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.team-member .image-box {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.team-member .name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0.5rem 0 0;
+}
+
+.team-member .position {
+    font-size: 0.9rem;
+    color: var(--secondary-text-color);
+    margin: 0;
+}
+
+
+/* --- Categories Section (Image 1) --- */
+
+.categories-section {
+    padding-top: 3rem;
+    padding-bottom: 8rem;
+}
+
+.category-item {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    /* Large gap for visual separation */
+    margin-bottom: 6rem;
+    /* Vertical space between the two rows */
+}
+
+.category-item>* {
+    flex: 1;
+    min-width: 0;
+    /* Important for flex items */
+}
+
+/* Default layout: Image Left, Text Right (Second row in image) */
+/* To create the 'Text Left, Image Right' layout for the first row: */
+.category-item.text-first {
+    flex-direction: reverse;
+}
+
+.category-item .text-content {
+    padding: 1rem 0;
+    width: 50%;
+}
+
+.category-item .small-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--secondary-text-color);
+    margin-bottom: 0.25rem;
+}
+
+.category-item .large-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 0 0 1rem 0;
+}
+
+.category-item .description {
+    color: var(--secondary-text-color);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Adjust alignment for the first row (Text Left) to match the image */
+.category-item.text-first .text-content {
+    text-align: left;
+}
+
+/* Adjust alignment for the second row (Text Right) to match the image */
+.category-item:not(.text-first) .text-content {
+    text-align: left;
+}
+
+
+/* --- Responsiveness for Mobile/Tablet --- */
+@media (max-width: 768px) {
+    .category-item {
+        flex-direction: column;
+        /* Stack image and text vertically */
+        gap: 2rem;
+        margin-bottom: 4rem;
+    }
+
+    .category-item.text-first {
+        flex-direction: column;
+        /* Ensure it stays stacked */
+    }
+
+    .category-item .image-box {
+        width: 80%;
+        /* Smaller image on mobile */
+        max-width: 400px;
+    }
+
+    .category-item .text-content {
+        text-align: center !important;
+        /* Center text content on mobile */
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .history-section {
+        padding-top: 3rem;
+    }
+}
